@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+  --font-bebas:'Bebas Neue', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+  --deep-navy: #001C44;
+  --bright-green: #00BB66;
+  --teal-green: #027F64;
+  --theme-color: #fff;
+}
+
+
+
+/* EXTRA EXTRA LARGE DESKTOPS */
+@media (max-width: 1800px) {
+  .navbar-container,
+  .hero-container {
+    max-width: 1320px;
+  }
+
+  .hero-heading {
+    font-size: 75px;
+  }
+}
+
+/* EXTRA LARGE DESKTOPS */
+@media (min-width: 1440px) and (max-width: 1799px) {
+  .navbar-container,
+  .hero-container {
+    max-width: 1280px;
+  }
+
+  .hero-heading {
+    font-size: 72px;
+  }
+
+  .desktop-mega-menu {
+    width: 800px;
+  }
+}
+
+/* LARGE DESKTOPS */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .navbar-container,
+  .hero-container {
+    max-width: 1140px;
+  }
+
+  .nav-links-list {
+    gap: 28px;
+  }
+
+  .hero-heading {
+    font-size: 54px;
+  }
+
+  .hero-container {
+    gap: 40px;
+  }
+
+  .desktop-mega-menu {
+    width: 760px;
+    padding: 24px;
+  }
+
+  .hero-service-card {
+    padding: 22px 18px;
+  }
+
+  .service-card-title {
+    font-size: 21px;
+  }
+}
+
+/* 2. MINI DESKTOPS & LANDSCAPE TABLETS (Together) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .navbar-container,
+  .hero-container {
+    max-width: 960px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .nav-links-list {
+    gap: 20px;
+  }
+
+  .desktop-mega-menu {
+    width: 700px;
+    padding: 20px;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .hero-heading {
+    font-size: 48px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-services-grid {
+    gap: 16px;
+  }
+
+  .hero-service-card {
+    padding: 20px 16px;
+    min-height: 200px;
+  }
+
+  .service-card-title {
+    font-size: 20px;
+  }
+}
+
+/* 3. PORTRAIT TABLETS (Separate) */
+@media (min-width: 577px) and (max-width: 991px) {
+  .navbar-desktop-nav,
+  .navbar-actions-desktop {
+    display: none !important;
+  }
+
+  .navbar-burger-btn {
+    display: flex !important;
+  }
+
+  .navbar-container {
+    padding: 16px 24px;
+  }
+
+  .hero-section {
+    padding: 60px 24px 80px;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .hero-content-left {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-heading {
+    font-size: 50px;
+    text-align: center;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .mobile-menu-backdrop {
+    padding: 14px;
+  }
+
+  .mobile-menu-panel {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  .modal-container {
+    max-width: 480px;
+    padding: 28px 24px;
+  }
+}
+
+/*  4. MOBILE (Separate) */
+@media (max-width: 576px) {
+  .navbar-desktop-nav,
+  .navbar-actions-desktop {
+    display: none !important;
+  }
+
+  .navbar-burger-btn {
+    display: flex !important;
+  }
+
+  .navbar-container {
+    padding: 14px 18px;
+  }
+
+  .navbar-logo-img {
+    height: 58px;
+    max-width: 140px;
+  }
+
+  /* Animated Mobile Menu covering whole screen with little gap */
+  .mobile-menu-backdrop {
+    padding: 10px;
+  }
+
+  .mobile-menu-panel {
+    padding: 20px 16px;
+    border-radius: 16px;
+    max-height: calc(100vh - 20px);
+  }
+
+  .mobile-nav-link {
+    font-size: 24px;
+    padding: 12px 6px;
+  }
+
+  .mobile-subservice-card {
+    padding: 10px 12px;
+  }
+
+  .mobile-sub-title {
+    font-size: 16px;
+  }
+
+  .mobile-sub-desc {
+    font-size: 12px;
+  }
+
+  .mobile-book-query-btn {
+    font-size: 15px;
+    padding: 13px 18px;
+  }
+
+  /* Hero Section Mobile */
+  .hero-section {
+    padding: 40px 16px 60px;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .hero-content-left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-tag-badge {
+    padding: 6px 14px;
+    margin-bottom: 16px;
+  }
+
+  .hero-tag-text {
+    font-size: 13px;
+  }
+
+  .hero-heading {
+    font-size: 39px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .hero-description {
+    font-size: 19px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 22px;
+  }
+
+  /* Hero 4 Services Boxes Grid Mobile */
+  .hero-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .hero-service-card {
+    padding: 16px 12px;
+    min-height: 180px;
+    border-radius: 14px;
+  }
+
+  .card-top-row {
+    margin-bottom: 8px;
+  }
+
+  .service-number {
+    font-size: 15px;
+  }
+
+  .service-tilt-badge {
+    width: 28px;
+    height: 28px;
+  }
+
+  .service-card-title {
+    font-size: 18px;
+    line-height: 1.15;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .service-card-desc {
+    font-size: 11px;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-bottom-action {
+    margin-top: 10px;
+    gap: 6px;
+  }
+
+  .card-action-text {
+    font-size: 10px;
+  }
+
+  .card-action-line {
+    width: 14px;
+  }
+
+  /* Query Modal Mobile */
+  .modal-backdrop {
+    padding: 10px;
+  }
+
+  .modal-container {
+    padding: 22px 18px;
+    border-radius: 16px;
+    max-height: 94vh;
+  }
+
+  .modal-title {
+    font-size: 28px;
+  }
+
+  .modal-subtitle {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .modal-submit-btn {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+}

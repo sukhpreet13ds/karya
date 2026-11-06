@@ -1,11 +1,294 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  ArrowUpRight,
+  Image as ImageIcon,
+  Play,
+  CheckCircle2,
+  X,
+  Mail,
+  Phone,
+  MapPin
+} from 'lucide-react';
+import 'animate.css';
 import { servicesData } from '../components/Navbar';
+import mobileImg from '../assets/mobile.png';
+import logo from '../assets/logo.png';
+import s1 from '../assets/s1.jpg'
+import s2 from '../assets/s2.jpg'
+import s3 from '../assets/s3.jpg'
+import s4 from '../assets/s4.jpg'
+import s5 from '../assets/s5.jpg'
+import s6 from '../assets/s6.jpg'
+import s7 from '../assets/s6.jpg'
+import s8 from '../assets/s8.jpg'
+import s9 from '../assets/s9.jpg'
+import s10 from '../assets/S10.png'
+import s11 from '../assets/S11.jpg'
+import s12 from '../assets/S12.jpg'
+import aboutHome from '../assets/about.png'
 
 const ROTATING_WORDS = ['Forward.', 'Beyond.', 'Higher.'];
+const CURRENT_YEAR = new Date().getFullYear();
+
+// Actionable service deliverables & capabilities for the marquee track
+const SERVICES_MARQUEE_ITEMS = [
+  { text: 'Meta & Instagram Performance Ads', tag: 'Paid Ads' },
+  { text: 'Search Engine Optimization (SEO)', tag: 'Organic' },
+  { text: 'Amazon & Flipkart Store Scaling', tag: 'E-Commerce' },
+  { text: 'Custom Full-Stack Web Development', tag: 'Development' },
+  { text: 'High-Converting Landing Pages', tag: 'CRO' },
+  { text: 'Google Search & Performance Max PPC', tag: 'Paid Ads' },
+  { text: 'Content Strategy & Copywriting', tag: 'Content' },
+  { text: 'Shopify Store Management & CRO', tag: 'E-Commerce' },
+  { text: 'UI/UX Interface & Interactive Design', tag: 'Design' },
+  { text: 'A+ Marketplace Cataloging & Listings', tag: 'E-Commerce' },
+  { text: 'Brand Authority & Organic Inbound', tag: 'Organic' },
+  { text: 'Speed Optimization & Web Security', tag: 'Tech' },
+  { text: 'Multi-Touch ROAS & Attribution Analytics', tag: 'Analytics' },
+];
+
+// 4 Core services with 3-3 image slides each (empty for now, ready for user upload)
+const SERVICES_SHOWCASE_DATA = [
+  {
+    id: 'paid-marketing',
+    title: 'Paid Marketing',
+    desc: 'At Karya, we focus on delivering data-driven ad campaigns across Meta, Google & LinkedIn targeted for maximum ROI.',
+    slides: [
+      { url: s1, caption: 'Campaign Architecture & ROAS Dashboard' },
+      { url: s2, caption: 'Meta & Google Ads Performance Matrix' },
+      { url: s3, caption: 'Audience Funnel & Retargeting Strategy' },
+    ],
+  },
+  {
+    id: 'organic-marketing',
+    title: 'Organic Marketing',
+    desc: 'At Karya, we focus on building sustainable visibility, SEO dominance, and high-ranking organic authority.',
+    slides: [
+      { url: s4, caption: 'Keyword Rankings & Inbound Search Growth' },
+      { url: s5, caption: 'High-Impact Content Strategy Roadmap' },
+      { url: s6, caption: 'Domain Authority & Organic Traffic Analytics' },
+    ],
+  },
+  {
+    id: 'ecommerce-management',
+    title: 'E-Commerce Management',
+    desc: 'At Karya, we focus on scaling marketplace stores on Amazon, Flipkart & Shopify with optimized sales funnels.',
+    slides: [
+      { url: s7, caption: 'Amazon & Flipkart Sales Acceleration' },
+      { url: s8, caption: 'Shopify Store Conversion Rate Funnel' },
+      { url: s9, caption: 'A+ Content & High-Converting Product Listings' },
+    ],
+  },
+  {
+    id: 'website-development',
+    title: 'Website Development',
+    desc: 'At Karya, we focus on engineering blazing-fast, conversion-optimized web platforms built to scale.',
+    slides: [
+      { url: s10, caption: 'Responsive High-Converting Web Platforms' },
+      { url: s11, caption: 'UI/UX Wireframes & Component Design System' },
+      { url: s12, caption: 'Core Web Vitals & Speed Optimization' },
+    ],
+  },
+];
+
+// Testimonials data: alternating text quote boxes and standalone video boxes
+const TESTIMONIALS_DATA = [
+  {
+    id: 'video-1',
+    type: 'video',
+    videoUrl: 'https://drive.google.com/file/d/19VClRhFfp4g5K-LYWsHcFWJeW-pZQQzN/view?usp=sharing',
+  },
+  {
+    id: 'text-1',
+    type: 'text',
+    quote:
+      '"From the day we onboarded Karya Marketing, our acquisition funnels became far more organized and profitable. Their bilingual performance campaigns and daily ad optimizations delivered a 4.2x ROAS within 60 days, and their responsive support team has always been a reliable technology partner."',
+    name: 'Ahmed Al Khalifa',
+    role: 'Owner, Elite Fitness Club, Manama',
+    tint: 'tint-mint',
+  },
+  {
+    id: 'video-2',
+    type: 'video',
+    videoUrl: 'https://drive.google.com/file/d/1AgyAnn032VFDfEkgBmNvEugSuPku-CYC/view?usp=drive_link',
+  },
+  {
+    id: 'text-2',
+    type: 'text',
+    quote:
+      '"Karya Marketing has simplified the way we scale our fitness studio. Automated membership funnels, high-converting creative ads, and weekly transparent attribution have significantly reduced our CPA while helping us stay closely connected with our members."',
+    name: 'Fatima Al Dosari',
+    role: 'Founder, Momentum Fitness Studio, Muharraq',
+    tint: 'tint-pink',
+  },
+  {
+    id: 'video-3',
+    type: 'video',
+    videoUrl: 'https://drive.google.com/file/d/15efqQljLF63utRf8Y1xzDF4lFN08iOpU/view?usp=drive_link',
+  },
+  {
+    id: 'text-3',
+    type: 'text',
+    quote:
+      '"What impressed me most is how comprehensive their growth strategy is. From managing multi-channel marketplaces to engineering blazing-fast landing pages, everything added real measurable revenue to our business. Highly recommended for ambitious founders."',
+    name: 'Yousef Al Mansoor',
+    role: 'Owner, Prime Active Gym, Riffa',
+    tint: 'tint-mint',
+  },
+  {
+    id: 'video-4',
+    type: 'video',
+    videoUrl: 'https://drive.google.com/file/d/1z8wyOGl7On0cXqXaN7Kgqt9EkCr1CQKl/view?usp=drive_link',
+  },
+];
+
+// Helper to convert Google Drive share links into embeddable preview URLs
+const formatVideoEmbedUrl = (url) => {
+  if (!url) return '';
+  if (url.includes('drive.google.com')) {
+    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (match && match[1]) {
+      return `https://drive.google.com/file/d/${match[1]}/preview`;
+    }
+  }
+  return url;
+};
+
+// Custom hook to trigger animate__fadeInUp when an element comes into view
+const useInView = (options = {}, initial = false) => {
+  const threshold = options?.threshold ?? 0.12;
+  const [inView, setInView] = useState(() => initial || (typeof window !== 'undefined' && !window.IntersectionObserver));
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (inView) return;
+    const element = ref.current;
+    if (!element || typeof window === 'undefined' || !window.IntersectionObserver) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold }
+    );
+
+    observer.observe(element);
+    return () => {
+      observer.disconnect();
+    };
+  }, [threshold, inView]);
+
+  return [ref, inView];
+};
+
+// Counter component for animated stats (0 -> target value)
+const StatCounter = ({ end, suffix = '', duration = 1600, startWhen = false }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!startWhen) return;
+
+    let startTime = null;
+    let animationFrame;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      // Smooth easeOutCubic curve
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(easeProgress * end));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [end, duration, startWhen]);
+
+  return (
+    <span>
+      {count}
+      {suffix}
+    </span>
+  );
+};
+
+// Video box component: displays thumbnail if available, otherwise fallback with white background & logo
+const TestimonialVideoCard = ({ videoUrl, onPlay }) => {
+  const [thumbError, setThumbError] = useState(false);
+  const match = videoUrl ? videoUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) : null;
+  const fileId = match ? match[1] : '';
+  const thumbUrl = fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w800` : '';
+
+  const handleTriggerPlay = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    onPlay(videoUrl);
+  };
+
+  return (
+    <div
+      className="testimonial-video-box"
+      onClick={handleTriggerPlay}
+      role="button"
+      tabIndex={0}
+      aria-label="Play video testimonial"
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleTriggerPlay();
+        }
+      }}
+    >
+      <div className="video-card-screen">
+        {!thumbError && thumbUrl ? (
+          <img
+            src={thumbUrl}
+            alt="Video testimonial"
+            className="video-thumb-img"
+            onError={() => setThumbError(true)}
+          />
+        ) : (
+          <div className="video-logo-fallback">
+            <img src={logo} alt="Karya Logo" className="video-fallback-logo" />
+          </div>
+        )}
+        <div className="video-play-pulse">
+          <Play size={22} fill="currentColor" />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Home = ({ onOpenQueryModal }) => {
   const [wordIndex, setWordIndex] = useState(0);
+  const [activeServiceIdx, setActiveServiceIdx] = useState(0);
+  const [activeSlideIdx, setActiveSlideIdx] = useState(0);
+  const [editorialImage, _setEditorialImage] = useState(aboutHome); // Empty for now, user can insert URL later
+  const [activeVideoUrl, setActiveVideoUrl] = useState(null);
+  const [currentTime, setCurrentTime] = useState('');
+
+  // Scroll reveal refs for each section
+  const [heroRef, heroInView] = useInView({ threshold: 0.05 }, true);
+  const [marqueeRef, marqueeInView] = useInView({ threshold: 0.1 });
+  const [servicesRef, servicesInView] = useInView({ threshold: 0.1 });
+  const [aboutRef, aboutInView] = useInView({ threshold: 0.1 });
+  const [statsRef, statsInView] = useInView({ threshold: 0.15 });
+  const [whyRef, whyInView] = useInView({ threshold: 0.1 });
+  const [testimonialsRef, testimonialsInView] = useInView({ threshold: 0.1 });
+  const [ctaRef, ctaInView] = useInView({ threshold: 0.1 });
+  const [footerRef, footerInView] = useInView({ threshold: 0.1 });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -14,6 +297,51 @@ const Home = ({ onOpenQueryModal }) => {
 
     return () => clearInterval(timer);
   }, []);
+
+  // Update clock for editorial top bar
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setCurrentTime(
+        now.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+        })
+      );
+    };
+    updateTime();
+    const clockTimer = setInterval(updateTime, 1000);
+    return () => clearInterval(clockTimer);
+  }, []);
+
+  // Manage body scroll when video popout modal is active
+  useEffect(() => {
+    if (activeVideoUrl) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [activeVideoUrl]);
+
+  const currentService = SERVICES_SHOWCASE_DATA[activeServiceIdx];
+  const totalSlides = currentService.slides.length;
+  const currentSlide = currentService.slides[activeSlideIdx];
+  const currentSlideImage = typeof currentSlide === 'string' ? currentSlide : (currentSlide?.url || '');
+  const currentSlideCaption = typeof currentSlide === 'object' ? currentSlide?.caption : '';
+
+  // Auto slide services section every 1500ms
+  useEffect(() => {
+    const slideTimer = setInterval(() => {
+      setActiveSlideIdx((prev) => (prev + 1) % totalSlides);
+    }, 1500);
+
+    return () => clearInterval(slideTimer);
+  }, [totalSlides, activeServiceIdx]);
 
   const handleServiceCardClick = (serviceTitle) => {
     if (onOpenQueryModal) {
@@ -27,13 +355,19 @@ const Home = ({ onOpenQueryModal }) => {
     }
   };
 
+  // Switch active service and reset slide to first
+  const handleSelectShowcaseService = (index) => {
+    setActiveServiceIdx(index);
+    setActiveSlideIdx(0);
+  };
+
   return (
     <main className="home-main">
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className="hero-section" ref={heroRef} id="hero">
         <div className="hero-container">
           {/* Left Side: Tag, Title, Desc, Two CTAs */}
-          <div className="hero-content-left">
+          <div className={`hero-content-left ${heroInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
             <div className="hero-tag-badge">
               <span className="pulse-indicator"></span>
               <span className="hero-tag-text">DIGITAL GROWTH PARTNER</span>
@@ -73,7 +407,7 @@ const Home = ({ onOpenQueryModal }) => {
           </div>
 
           {/* Right Side: Four Boxes Grid with Services Names */}
-          <div className="hero-services-right">
+          <div className={`hero-services-right ${heroInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
             <div className="hero-services-grid">
               {servicesData.map((service, index) => (
                 <div
@@ -109,6 +443,569 @@ const Home = ({ onOpenQueryModal }) => {
           </div>
         </div>
       </section>
+
+      {/* Services Marquee Track: Things we provide */}
+      <section className="services-marquee-section" ref={marqueeRef} aria-label="Services Offerings Ticker">
+        <div className={`marquee-outer-wrapper ${marqueeInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+          <div className="marquee-track">
+            {SERVICES_MARQUEE_ITEMS.concat(SERVICES_MARQUEE_ITEMS).map((item, idx) => (
+              <div key={`marquee-item-${idx}`} className="marquee-item">
+                <span className="marquee-sparkle">✦</span>
+                <span className="marquee-text">{item.text}</span>
+                <span className="marquee-badge">{item.tag}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Showcase Section */}
+      <section className="services-showcase-section" ref={servicesRef} id="services">
+        <div className="services-showcase-container">
+          <div className="services-showcase-wrapper">
+
+            {/* Left Header Area */}
+            <div className={`services-header-area ${servicesInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <div className="services-tag-badge">
+                <span className="services-tag-bullet"></span>
+                <span className="services-tag-text">CORE EXPERTISE</span>
+              </div>
+              <h2 className="services-showcase-title">Services that we provide</h2>
+              <p className="services-showcase-desc">
+                Explore our range of design and digital growth services designed to go beyond aesthetics.
+                We specialize in crafting purposeful experiences that align with your brand's vision and goals.
+              </p>
+            </div>
+
+            {/* Visual Showcase (3-3 Image Slides with animate__zoomIn) */}
+            {/* Note: In Desktop this appears on the right; in Mobile this appears ABOVE the boxes */}
+            <div className={`services-visual-area ${servicesInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <div className="showcase-device-frame">
+                {/* Top Window Bar */}
+               
+
+                {/* Animated Slide Screen */}
+                <div className="showcase-screen-viewport">
+                  <div
+                    key={`${currentService.id}-${activeSlideIdx}`}
+                    className="showcase-slide-animator animate__animated animate__zoomIn"
+                  >
+                    {currentSlideImage ? (
+                      <img
+                        src={currentSlideImage}
+                        alt={currentSlideCaption || currentService.title}
+                        className="showcase-active-img"
+                      />
+                    ) : (
+                      <div className="showcase-empty-placeholder">
+                        <div className="placeholder-content">
+                          <div className="placeholder-icon-ring">
+                            <ImageIcon size={38} className="placeholder-icon" strokeWidth={1.8} />
+                          </div>
+                          <h4 className="placeholder-service-name">{currentService.title}</h4>
+                          <p className="placeholder-slide-caption">
+                            {currentSlideCaption || `Slide 0${activeSlideIdx + 1} Preview`}
+                          </p>
+                          <div className="placeholder-meta-tags">
+                            <span className="placeholder-pill">Slide {activeSlideIdx + 1} of 3</span>
+                            <span className="placeholder-status-tag">Ready for Upload</span>
+                          </div>
+                          <p className="placeholder-helper-note">
+                            Insert image in SERVICES_SHOWCASE_DATA: slides[{activeSlideIdx}].url
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Slide Bottom Controls (Navigation buttons without arrows, auto-advances every 1500ms) */}
+                <div className="showcase-slide-controls">
+                  <div className="slide-dots-group">
+                    {currentService.slides.map((_, dotIdx) => (
+                      <button
+                        key={`slide-dot-${dotIdx}`}
+                        type="button"
+                        className={`slide-nav-dot ${activeSlideIdx === dotIdx ? 'active' : ''}`}
+                        onClick={() => setActiveSlideIdx(dotIdx)}
+                        aria-label={`Go to slide ${dotIdx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Service Boxes 2x2 Grid */}
+            <div className={`services-boxes-grid ${servicesInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              {SERVICES_SHOWCASE_DATA.map((service, index) => {
+                const isActive = activeServiceIdx === index;
+                return (
+                  <div
+                    key={service.id}
+                    className={`service-feature-card ${isActive ? 'active-service-card' : ''}`}
+                    onClick={() => handleSelectShowcaseService(index)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleSelectShowcaseService(index);
+                      }
+                    }}
+                  >
+                    <div className="feature-card-header">
+                      <h3 className="feature-card-title">{service.title}</h3>
+                      
+                    </div>
+                    <p className="feature-card-desc">{service.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Editorial Company Profile Section (White Theme) */}
+      <section className="editorial-about-section" ref={aboutRef} id="about">
+        <div className="editorial-container">
+          {/* Giant Title from Design */}
+          <div className={`editorial-header-wrap ${aboutInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            <h1 className="editorial-hero-title">Karya Marketing</h1>
+
+            {/* Top Meta Line with local time */}
+            <div className="editorial-meta-bar">
+              <span className="editorial-meta-item">DIGITAL GROWTH PARTNER</span>
+              <span className="editorial-meta-item">INNOVATION & PERFORMANCE</span>
+              <span className="editorial-meta-item editorial-time-pill">
+                OUR TIME {currentTime || '3:24:50 PM'}
+              </span>
+            </div>
+          </div>
+
+          {/* Content Grid: Left Text + Co-Founders + CTA, Right Image */}
+          <div className="editorial-content-grid">
+            <div className={`editorial-left-col ${aboutInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <p className="editorial-paragraph">
+                We are a full-service digital marketing and performance growth partner focused on
+                creating thoughtful, ROI-centered digital experiences. With a sharp eye for metrics
+                and a deep understanding of consumer psychology, we craft strategies that are not
+                only visually compelling but also scalable, intuitive, and profitable.
+              </p>
+
+              <p className="editorial-paragraph">
+                We believe great marketing goes beyond surface aesthetics—it solves real business
+                problems and delivers meaningful revenue experiences. Our approach combines rigorous
+                data, creative storytelling, and tech architecture to build products and campaigns
+                that users enjoy and businesses value.
+              </p>
+
+              {/* Co-Founders Highlight */}
+              <div className="editorial-founders-block">
+                <span className="founders-label">CO-FOUNDERS</span>
+                <div className="founders-chips">
+                  <div className="founder-chip">
+                    <span className="founder-avatar-initial">S</span>
+                    <div className="founder-info">
+                      <strong className="founder-name">Mr. Surya Thakur</strong>
+                      <span className="founder-role">Co-Founder & Growth Strategist</span>
+                    </div>
+                  </div>
+                  <div className="founder-chip">
+                    <span className="founder-avatar-initial">K</span>
+                    <div className="founder-info">
+                      <strong className="founder-name">Miss. Kanishtha</strong>
+                      <span className="founder-role">Co-Founder & Creative Director</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Know More Button */}
+              <div className="editorial-action-row">
+                <button
+                  type="button"
+                  className="btn-know-more"
+                  onClick={() => handleCtaClick('General Inquiry')}
+                >
+                  <span>Know more</span>
+                  <ArrowUpRight size={18} strokeWidth={2.4} />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: Image Frame (Empty placeholder ready for upload) */}
+            <div className={`editorial-right-col ${aboutInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <div className="editorial-image-frame">
+                {editorialImage ? (
+                  <img
+                    src={editorialImage}
+                    alt="Karya Marketing Profile"
+                    className="editorial-main-img"
+                  />
+                ) : (
+                  <div className="editorial-placeholder-box">
+                    <div className="editorial-placeholder-inner">
+                      <div className="placeholder-cam-icon">
+                        <ImageIcon size={44} strokeWidth={1.6} />
+                      </div>
+                      <h4 className="placeholder-head">Karya Marketing Showcase</h4>
+                      <p className="placeholder-sub">Upload image in editorialImage state</p>
+                      <span className="placeholder-badge">Ready For Image</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Stats Section with animated counter effect */}
+          <div className={`editorial-stats-row ${statsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`} ref={statsRef}>
+            <div className="editorial-stat-card">
+              <span className="stat-category-tag">COMPANIES</span>
+              <h3 className="stat-large-number">
+                <StatCounter end={28} suffix="+" startWhen={statsInView} />
+              </h3>
+              <p className="stat-desc-text">
+                GLOBALLY AVAILABLE, EMBRACING A VARIETY OF CULTURES & VERTICALS
+              </p>
+            </div>
+
+            <div className="editorial-stat-card">
+              <span className="stat-category-tag">AWARDS</span>
+              <h3 className="stat-large-number">
+                <StatCounter end={39} suffix="+" startWhen={statsInView} />
+              </h3>
+              <p className="stat-desc-text">
+                RECOGNIZED FOR EXCEPTIONAL CREATIVITY & DATA-DRIVEN PERFORMANCE
+              </p>
+            </div>
+
+            <div className="editorial-stat-card">
+              <span className="stat-category-tag">PROJECTS</span>
+              <h3 className="stat-large-number">
+                <StatCounter end={150} suffix="+" startWhen={statsInView} />
+              </h3>
+              <p className="stat-desc-text">
+                DELIVERED GLOBALLY, CELEBRATING SUSTAINABLE REVENUE GROWTH
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section (Bento Grid: 2 Large, 2 Small across 2 rows) */}
+      <section className="why-choose-section" ref={whyRef} id="why-choose-us">
+        <div className="why-choose-container">
+          <div className={`why-choose-header ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            <div className="services-tag-badge">
+              <span className="services-tag-bullet"></span>
+              <span className="services-tag-text">OUR ADVANTAGE</span>
+            </div>
+            <h2 className="why-choose-title">Why Choose Us</h2>
+            <p className="why-choose-desc">
+              We bridge the gap between creative storytelling and algorithmic precision. Every
+              strategy is backed by real data, total funnel accountability, and compounding ROI.
+            </p>
+          </div>
+
+          <div className="bento-grid-wrapper">
+            {/* Row 1: Box 1 (Large - Paragraph) & Box 2 (Small - Check Points) */}
+            <div className={`bento-box bento-large bento-box-1 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <div className="bento-top-row">
+                <span className="bento-index">01</span>
+                <span className="bento-tag">DATA & ATTRIBUTION</span>
+              </div>
+              <h3 className="bento-title">Total Funnel Accountability & Zero Vanity Metrics</h3>
+              <p className="bento-paragraph">
+                Many agencies report vanity impressions while actual profits stagnate. At Karya, we
+                take full ownership of your conversion pipeline—from first impression to customer
+                lifetime value. Every ad dollar is tracked with custom attribution models, and we
+                rigorously audit conversion rates at every touchpoint to guarantee measurable,
+                repeatable return on ad spend.
+              </p>
+            </div>
+
+            <div className={`bento-box bento-small bento-box-2 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <div className="bento-top-row">
+                <span className="bento-index">02</span>
+                <span className="bento-tag">PRECISION SYSTEM</span>
+              </div>
+              <h3 className="bento-title">Performance Precision</h3>
+              <ul className="bento-points-list">
+                <li>
+                  <CheckCircle2 className="check-icon" size={19} />
+                  <span>Zero vanity metrics — 100% focused on revenue</span>
+                </li>
+                <li>
+                  <CheckCircle2 className="check-icon" size={19} />
+                  <span>Transparent weekly attribution & live reporting</span>
+                </li>
+                <li>
+                  <CheckCircle2 className="check-icon" size={19} />
+                  <span>Rapid iterative creative testing cycle</span>
+                </li>
+                <li>
+                  <CheckCircle2 className="check-icon" size={19} />
+                  <span>Direct access to senior growth strategists</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Row 2: Box 3 (Small - Check Points) & Box 4 (Large - Paragraph) */}
+            <div className={`bento-box bento-small bento-box-3 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <div className="bento-top-row">
+                <span className="bento-index">03</span>
+                <span className="bento-tag">TECH ARCHITECTURE</span>
+              </div>
+              <h3 className="bento-title">Engineered For Scale</h3>
+              <ul className="bento-points-list">
+                <li>
+                  <CheckCircle2 className="check-icon" size={19} />
+                  <span>Blazing-fast custom code & landing architectures</span>
+                </li>
+                <li>
+                  <CheckCircle2 className="check-icon" size={19} />
+                  <span>Amazon, Flipkart & Shopify store scaling</span>
+                </li>
+                <li>
+                  <CheckCircle2 className="check-icon" size={19} />
+                  <span>Dedicated growth account manager</span>
+                </li>
+                <li>
+                  <CheckCircle2 className="check-icon" size={19} />
+                  <span>Continuous conversion rate optimization (CRO)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className={`bento-box bento-large bento-box-4 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <div className="bento-top-row">
+                <span className="bento-index">04</span>
+                <span className="bento-tag">CREATIVE ENGINE</span>
+              </div>
+              <h3 className="bento-title">High-Impact Creative Meets Algorithmic Rigor</h3>
+              <p className="bento-paragraph">
+                High-performance growth requires the intersection of emotion and engineering. Our
+                in-house designers, copywriters, and developers produce thumb-stopping creative
+                assets engineered specifically to hook modern buyers, while our media buyers
+                dynamically optimize multi-channel bid strategies to consistently outpace your
+                competition.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section (Continuous Seamless Loop Marquee with Text & Video Boxes) */}
+      <section className="testimonials-marquee-section" ref={testimonialsRef} id="testimonials">
+        <div className={`testimonials-header-block ${testimonialsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+          <h2 className="testimonials-main-title">Testimonials</h2>
+        </div>
+
+        <div className={`testimonials-marquee-outer ${testimonialsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+          <div className="testimonials-marquee-track">
+            {TESTIMONIALS_DATA.concat(TESTIMONIALS_DATA).map((item, idx) => {
+              if (item.type === 'video') {
+                return (
+                  <TestimonialVideoCard
+                    key={`testimonial-video-${item.id}-${idx}`}
+                    videoUrl={item.videoUrl}
+                    onPlay={setActiveVideoUrl}
+                  />
+                );
+              }
+
+              return (
+                <div
+                  key={`testimonial-${item.id}-${idx}`}
+                  className={`testimonial-quote-box ${item.tint}`}
+                >
+                  <p className="testimonial-quote-text">{item.quote}</p>
+
+                  <div className="testimonial-card-bottom">
+                    <div className="author-details">
+                      <strong className="author-name">{item.name}</strong>
+                      <span className="author-role">{item.role}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section (Reference Design with Half Mobile Image, No Logos) */}
+      <section className="cta-showcase-section" ref={ctaRef} id="contact">
+        <div className="cta-showcase-container">
+          <div className="cta-content-wrapper">
+            {/* Left Side: Tag, Heading, Desc, Button */}
+            <div className={`cta-text-side ${ctaInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <div className="cta-release-badge">
+                <span className="cta-dot"></span>
+                <span className="cta-badge-label">Free Consultation</span>
+                <span
+                  className="cta-badge-action"
+                  onClick={() => handleCtaClick('Discovery Call')}
+                  role="button"
+                  tabIndex={0}
+                >
+                  Book a Discovery Call &rarr;
+                </span>
+              </div>
+
+              <h2 className="cta-main-heading">
+                We help brands and individuals bring their vision to life!
+              </h2>
+
+              <p className="cta-sub-description">
+                Our team creates high-converting digital campaigns, scalable technology, and performance
+                strategies that tell your story, acquire customers, and leave a lasting impression on your audience.
+              </p>
+
+              <div className="cta-actions-group">
+                <button
+                  type="button"
+                  className="btn-cta-get-started"
+                  onClick={() => handleCtaClick('Get Started')}
+                >
+                  Get Started
+                </button>
+              </div>
+            </div>
+
+            {/* Right Side: Half Mobile Asset */}
+            <div className={`cta-mobile-side ${ctaInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <div className="cta-mobile-frame">
+                <img src={mobileImg} alt="Karya Mobile Showcase" className="cta-half-mobile-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <footer className="footer-main-section" ref={footerRef}>
+        <div className="footer-container">
+          <div className={`footer-top-grid ${footerInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            {/* Brand Column */}
+            <div className="footer-col footer-col-brand">
+              <a href="#" className="footer-brand-link">
+                <img src={logo} alt="Karya Logo" className="footer-logo-img" />
+              </a>
+              <p className="footer-brand-desc">
+                Karya Marketing is your full-service digital growth partner. We combine creative storytelling,
+                performance media buying, and enterprise web architecture to build brands that lead.
+              </p>
+              <div className="footer-badge-trust">
+                <span className="trust-indicator"></span>
+                <span>Trusted by 28+ Global Brands</span>
+              </div>
+            </div>
+
+            {/* Quick Links Column */}
+            <div className="footer-col">
+              <h4 className="footer-col-title">Navigation</h4>
+              <ul className="footer-links-list">
+                <li><a href="#" className="footer-link">Home</a></li>
+                <li><a href="#services" className="footer-link">Services</a></li>
+                <li><a href="#about" className="footer-link">About Us</a></li>
+                <li><a href="#why-choose-us" className="footer-link">Why Choose Us</a></li>
+                <li><a href="#testimonials" className="footer-link">Testimonials</a></li>
+              </ul>
+            </div>
+
+            {/* Core Services Column */}
+            <div className="footer-col">
+              <h4 className="footer-col-title">Services</h4>
+              <ul className="footer-links-list">
+                <li><a href="#services" className="footer-link">Paid Performance Ads</a></li>
+                <li><a href="#services" className="footer-link">Search Engine Optimization (SEO)</a></li>
+                <li><a href="#services" className="footer-link">E-Commerce & Marketplace</a></li>
+                <li><a href="#services" className="footer-link">Website & Web App Development</a></li>
+                <li><a href="#services" className="footer-link">Conversion Rate Optimization (CRO)</a></li>
+              </ul>
+            </div>
+
+            {/* Contact & Inquiry Column */}
+            <div className="footer-col">
+              <h4 className="footer-col-title">Get in Touch</h4>
+              <ul className="footer-contact-list">
+                <li className="contact-item">
+                  <Mail size={16} className="contact-icon" />
+                  <a href="mailto:hello@karyamarketing.com" className="footer-link">hello@karyamarketing.com</a>
+                </li>
+                <li className="contact-item">
+                  <Phone size={16} className="contact-icon" />
+                  <a href="tel:+919876543210" className="footer-link">+91 98765 43210</a>
+                </li>
+                <li className="contact-item">
+                  <MapPin size={16} className="contact-icon" />
+                  <span>Available Globally / Headquartered in India</span>
+                </li>
+              </ul>
+
+              <button
+                type="button"
+                className="btn-footer-query"
+                onClick={() => handleCtaClick('Footer Inquiry')}
+              >
+                <span>Book a Query</span>
+                <ArrowUpRight size={16} />
+              </button>
+            </div>
+          </div>
+
+          {/* Footer Bottom Bar */}
+          <div className={`footer-bottom-bar ${footerInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            <p className="footer-copyright">
+              &copy; {CURRENT_YEAR} Karya Marketing. All rights reserved.
+            </p>
+            <div className="footer-legal-links">
+              <a href="#" className="footer-sublink">Privacy Policy</a>
+              <span className="footer-dot-sep">&bull;</span>
+              <a href="#" className="footer-sublink">Terms of Service</a>
+              <span className="footer-dot-sep">&bull;</span>
+              <a href="#" className="footer-sublink">Cookie Settings</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Video Popout Modal (Pure video player, no extra frames, no extra text) */}
+      {activeVideoUrl && (
+        <div
+          className="video-modal-backdrop"
+          onClick={() => setActiveVideoUrl(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="video-modal-container" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="video-modal-close-btn"
+              onClick={() => setActiveVideoUrl(null)}
+              aria-label="Close video"
+            >
+              <X size={26} strokeWidth={2.4} />
+            </button>
+
+            <div className="video-player-frame">
+              <iframe
+                src={formatVideoEmbedUrl(activeVideoUrl)}
+                title="Client Video Testimonial"
+                allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope"
+                allowFullScreen
+                loading="eager"
+                className="video-embed-iframe"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 };

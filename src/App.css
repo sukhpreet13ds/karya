@@ -21,7 +21,10 @@
   .editorial-container,
   .why-choose-container,
   .cta-showcase-container,
-  .footer-container {
+  .footer-container,
+  .about-section-container,
+  .contact-container,
+  .services-page-container {
     max-width: 1320px;
   }
 
@@ -42,7 +45,10 @@
   .editorial-container,
   .why-choose-container,
   .cta-showcase-container,
-  .footer-container {
+  .footer-container,
+  .about-section-container,
+  .contact-container,
+  .services-page-container {
     max-width: 1280px;
   }
 
@@ -67,7 +73,10 @@
   .editorial-container,
   .why-choose-container,
   .cta-showcase-container,
-  .footer-container {
+  .footer-container,
+  .about-section-container,
+  .contact-container,
+  .services-page-container {
     max-width: 1140px;
   }
 
@@ -121,7 +130,10 @@
   .editorial-container,
   .why-choose-container,
   .cta-showcase-container,
-  .footer-container {
+  .footer-container,
+  .about-section-container,
+  .contact-container,
+  .services-page-container {
     max-width: 960px;
     padding-left: 20px;
     padding-right: 20px;
@@ -207,6 +219,12 @@
     min-height: 200px;
     max-height: 200px;
     padding: 18px 20px;
+  }
+
+  .video-review-card {
+    flex: 0 0 calc(33.333% - 16px);
+    min-width: 270px;
+    height: 420px;
   }
 
   .cta-content-wrapper {
@@ -355,6 +373,24 @@
     grid-column: span 12;
   }
 
+  /* Video Reviews Tablet */
+  .video-reviews-section {
+    padding: 70px 0 80px;
+  }
+
+  .video-reviews-container {
+    padding: 0 24px;
+  }
+
+  .video-reviews-title {
+    font-size: 38px;
+  }
+
+  .video-review-card {
+    flex: 0 0 260px;
+    height: 400px;
+  }
+
   /* Testimonials Tablet */
   .testimonials-marquee-section {
     padding: 70px 0 80px;
@@ -423,6 +459,80 @@
   .footer-top-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
+  }
+
+  /* About Page Tablet */
+  .about-content-section {
+    padding: 70px 24px;
+  }
+
+  .about-checklist-grid,
+  .about-founders-grid,
+  .about-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-guarantee-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .about-hero-image-frame,
+  .contact-hero-image-frame {
+    height: 250px;
+  }
+
+  /* Contact Page Tablet */
+  .contact-grid-section {
+    padding: 70px 24px 80px;
+  }
+
+  .contact-split-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 60px;
+  }
+
+  .contact-company-name {
+    font-size: 36px;
+  }
+
+  .contact-map-wrapper {
+    padding: 28px 24px;
+  }
+
+  /* Services Page Tablet */
+  .services-alternating-section {
+    padding: 30px 24px 60px;
+  }
+
+  .service-showcase-row,
+  .service-showcase-row.layout-slider-right,
+  .service-showcase-row.layout-slider-left {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding: 54px 0;
+  }
+
+  .service-row-media-col {
+    order: 1; /* Images strictly above content on tablet */
+    width: 100%;
+  }
+
+  .service-row-content-col {
+    order: 2; /* Content below images */
+    width: 100%;
+  }
+
+  .service-auto-slider-viewport {
+    max-height: 420px;
+  }
+
+  .inclusions-strip-container {
+    gap: 18px;
+    justify-content: flex-start;
   }
 }
 
@@ -890,6 +1000,50 @@
     gap: 10px;
   }
 
+  /* Video Reviews Mobile (Horizontal Swipeable Track, No Marquee, Hidden Scrollbar) */
+  .video-reviews-section {
+    padding: 50px 0 60px;
+  }
+
+  .video-reviews-container {
+    padding: 0 16px;
+  }
+
+  .video-reviews-title {
+    font-size: 30px;
+    margin-bottom: 8px;
+  }
+
+  .video-reviews-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  .video-reviews-track {
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+
+  .video-review-card {
+    flex: 0 0 240px;
+    height: 380px;
+    border-radius: 20px;
+  }
+
+  .video-review-play-center {
+    width: 50px;
+    height: 50px;
+  }
+
+  .video-review-card-title {
+    font-size: 16px;
+  }
+
+  .video-review-card-sub {
+    font-size: 12px;
+  }
+
   /* Testimonials Mobile */
   .testimonials-marquee-section {
     padding: 48px 0 60px;
@@ -924,63 +1078,66 @@
     font-size: 10px;
   }
 
-  .testimonial-video-box {
-    width: 260px;
-    height: 175px;
-    min-height: 175px;
-    max-height: 175px;
-    padding: 0;
-    border-radius: 16px;
-  }
-
-  .video-card-screen {
-    border-radius: 15px;
-  }
-
-  .video-fallback-logo {
-    max-width: 120px;
-    max-height: 50px;
-  }
-
-  .video-play-pulse {
-    width: 44px;
-    height: 44px;
-  }
-
-  /* Full screen cover video modal on mobile */
+  /* Fixed Mobile Popout Modal with dedicated header & space for Close button */
   .video-modal-backdrop {
     padding: 0;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.98);
   }
 
   .video-modal-container {
     width: 100vw;
     height: 100dvh;
     max-width: 100vw;
-    justify-content: center;
-    padding: 0;
+    padding: max(14px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .video-modal-header-bar {
+    height: 50px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 100005;
+  }
+
+  .video-modal-title {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 700;
   }
 
   .video-modal-close-btn {
-    top: max(16px, env(safe-area-inset-top));
-    right: max(16px, env(safe-area-inset-right));
-    width: 44px;
-    height: 44px;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    position: static;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
     color: #ffffff;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
-    z-index: 100001;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
 
   .video-player-frame {
-    width: 100vw;
-    height: 100dvh;
-    max-height: 100dvh;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
+    width: 100%;
+    flex: 1;
+    max-height: calc(100dvh - 84px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
     aspect-ratio: unset;
+    overflow: hidden;
+    margin: 0;
   }
 
   .video-embed-iframe {
@@ -1071,17 +1228,284 @@
   }
 
   /* Video Modal Mobile */
-  .video-modal-backdrop {
-    padding: 12px;
+  .video-player-frame {
+    border-radius: 14px;
   }
 
-  .video-modal-close-btn {
-    top: -46px;
+  /* About Page Mobile */
+  .about-hero-image-frame,
+  .contact-hero-image-frame {
+    height: 230px;
+    padding: 16px;
+  }
+
+  .about-hero-title,
+  .contact-hero-title {
+    font-size: 28px;
+  }
+
+  .about-hero-sub,
+  .contact-hero-sub {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .about-content-section {
+    padding: 54px 16px;
+  }
+
+  .about-section-heading {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .about-section-subtext {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  .about-lead-paragraph {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .about-secondary-paragraph {
+    font-size: 14px;
+  }
+
+  .about-checklist-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .about-check-card {
+    padding: 18px 16px;
+    gap: 14px;
+  }
+
+  .check-icon-circle {
     width: 38px;
     height: 38px;
   }
 
-  .video-player-frame {
-    border-radius: 14px;
+  .check-card-title {
+    font-size: 16px;
+  }
+
+  .check-card-desc {
+    font-size: 13.5px;
+  }
+
+  .about-founders-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .founder-profile-card {
+    padding: 24px 18px;
+  }
+
+  .founder-profile-name {
+    font-size: 19px;
+  }
+
+  .founder-bio-text {
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+
+  .founder-points-list li {
+    font-size: 13.5px;
+  }
+
+  .about-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .about-pillar-box {
+    padding: 24px 18px;
+  }
+
+  .pillar-title {
+    font-size: 17.5px;
+  }
+
+  .pillar-paragraph {
+    font-size: 13.5px;
+    margin-bottom: 16px;
+  }
+
+  .about-guarantee-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .guarantee-card {
+    padding: 24px 18px;
+  }
+
+  /* Contact Page Mobile */
+  .contact-grid-section {
+    padding: 54px 16px 70px;
+  }
+
+  .contact-split-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    margin-bottom: 50px;
+  }
+
+  .contact-company-name {
+    font-size: 30px;
+  }
+
+  .contact-form-card {
+    padding: 26px 18px;
+    border-radius: 18px;
+  }
+
+  .form-card-title {
+    font-size: 22px;
+  }
+
+  .form-card-sub {
+    font-size: 13.5px;
+    margin-bottom: 20px;
+  }
+
+  .btn-contact-submit {
+    width: 100%;
+    padding: 14px 22px;
+    font-size: 15px;
+  }
+
+  .contact-map-wrapper {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .contact-google-map {
+    height: 300px;
+  }
+
+  /* Legal Pages Mobile */
+  .legal-page-main {
+    padding: 44px 16px 70px;
+  }
+
+  .legal-page-title {
+    font-size: 28px;
+  }
+
+  .legal-section-title {
+    font-size: 18px;
+  }
+
+  .legal-section p,
+  .legal-bullet-list li {
+    font-size: 14px;
+  }
+
+  .legal-contact-card {
+    padding: 20px 18px;
+  }
+
+  /* Services Page Mobile */
+  .services-inclusions-strip {
+    padding: 14px 16px;
+  }
+
+  .inclusions-strip-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .inclusion-pill {
+    font-size: 12.5px;
+  }
+
+  .services-alternating-section {
+    padding: 20px 16px 60px;
+  }
+
+  .service-showcase-row,
+  .service-showcase-row.layout-slider-right,
+  .service-showcase-row.layout-slider-left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 44px 0;
+  }
+
+  .service-row-media-col {
+    order: 1; /* Images strictly above content in mobile */
+    width: 100%;
+  }
+
+  .service-row-content-col {
+    order: 2; /* Content strictly below images in mobile */
+    width: 100%;
+  }
+
+  .service-auto-slider-container {
+    border-radius: 18px;
+  }
+
+  .service-auto-slider-viewport {
+    aspect-ratio: 4 / 3;
+    max-height: 300px;
+  }
+
+  .service-slide-caption-bar {
+    padding: 12px 14px 14px;
+  }
+
+  .service-slide-caption-text {
+    font-size: 12px;
+  }
+
+  .service-main-title {
+    font-size: 26px;
+  }
+
+  .service-main-headline {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .service-main-desc {
+    font-size: 13.5px;
+    margin-bottom: 20px;
+  }
+
+  .service-accordion-trigger {
+    padding: 14px 14px;
+  }
+
+  .accordion-item-title {
+    font-size: 14px;
+  }
+
+  .service-accordion-content {
+    padding: 0 14px 14px 14px;
+  }
+
+  .service-accordion-desc {
+    font-size: 13px;
+  }
+
+  .service-action-buttons-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-service-whatsapp,
+  .btn-service-book-now {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 14px;
   }
 }

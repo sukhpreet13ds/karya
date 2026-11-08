@@ -4,10 +4,7 @@ import {
   Image as ImageIcon,
   Play,
   CheckCircle2,
-  X,
-  Mail,
-  Phone,
-  MapPin
+  X
 } from 'lucide-react';
 import 'animate.css';
 import { servicesData } from '../components/Navbar';
@@ -19,16 +16,16 @@ import s3 from '../assets/s3.jpg'
 import s4 from '../assets/s4.jpg'
 import s5 from '../assets/s5.jpg'
 import s6 from '../assets/s6.jpg'
-import s7 from '../assets/s6.jpg'
+import s7 from '../assets/s7.jpg'
 import s8 from '../assets/s8.jpg'
 import s9 from '../assets/s9.jpg'
 import s10 from '../assets/S10.png'
 import s11 from '../assets/S11.jpg'
 import s12 from '../assets/S12.jpg'
 import aboutHome from '../assets/about.png'
+import  {Link} from 'react-router-dom';
 
 const ROTATING_WORDS = ['Forward.', 'Beyond.', 'Higher.'];
-const CURRENT_YEAR = new Date().getFullYear();
 
 // Actionable service deliverables & capabilities for the marquee track
 const SERVICES_MARQUEE_ITEMS = [
@@ -52,7 +49,7 @@ const SERVICES_SHOWCASE_DATA = [
   {
     id: 'paid-marketing',
     title: 'Paid Marketing',
-    desc: 'At Karya, we focus on delivering data-driven ad campaigns across Meta, Google & LinkedIn targeted for maximum ROI.',
+    desc: 'Facebook, Instagram, Google, LinkedIn & YouTube campaigns built for enquiries, WhatsApp chats and sales.',
     slides: [
       { url: s1, caption: 'Campaign Architecture & ROAS Dashboard' },
       { url: s2, caption: 'Meta & Google Ads Performance Matrix' },
@@ -62,7 +59,7 @@ const SERVICES_SHOWCASE_DATA = [
   {
     id: 'organic-marketing',
     title: 'Organic Marketing',
-    desc: 'At Karya, we focus on building sustainable visibility, SEO dominance, and high-ranking organic authority.',
+    desc: 'Rank higher on Google for the searches your buyers make with SEO, content calendars, and YouTube SEO.',
     slides: [
       { url: s4, caption: 'Keyword Rankings & Inbound Search Growth' },
       { url: s5, caption: 'High-Impact Content Strategy Roadmap' },
@@ -71,8 +68,8 @@ const SERVICES_SHOWCASE_DATA = [
   },
   {
     id: 'ecommerce-management',
-    title: 'E-Commerce Management',
-    desc: 'At Karya, we focus on scaling marketplace stores on Amazon, Flipkart & Shopify with optimized sales funnels.',
+    title: 'E-Commerce & Marketplaces',
+    desc: 'Sell more on Amazon, Flipkart, Myntra & Nykaa with catalog setup, listing optimisation, reviews and marketplace ads.',
     slides: [
       { url: s7, caption: 'Amazon & Flipkart Sales Acceleration' },
       { url: s8, caption: 'Shopify Store Conversion Rate Funnel' },
@@ -82,7 +79,7 @@ const SERVICES_SHOWCASE_DATA = [
   {
     id: 'website-development',
     title: 'Website Development',
-    desc: 'At Karya, we focus on engineering blazing-fast, conversion-optimized web platforms built to scale.',
+    desc: 'Shopify, WordPress, .NET & custom websites built for speed, mobile-friendly design, SEO and tracking setup.',
     slides: [
       { url: s10, caption: 'Responsive High-Converting Web Platforms' },
       { url: s11, caption: 'UI/UX Wireframes & Component Design System' },
@@ -91,16 +88,38 @@ const SERVICES_SHOWCASE_DATA = [
   },
 ];
 
-// Testimonials data: alternating text quote boxes and standalone video boxes
-const TESTIMONIALS_DATA = [
+// Standalone Video Reviews (Displayed in dedicated Review section with taller aspect ratio)
+const VIDEO_REVIEWS_DATA = [
   {
     id: 'video-1',
-    type: 'video',
-    videoUrl: 'https://drive.google.com/file/d/19VClRhFfp4g5K-LYWsHcFWJeW-pZQQzN/view?usp=sharing',
+    title: 'Elite Fitness Club',
+    subtitle: 'Scaling 4.2x ROAS in 60 Days',
+    videoUrl: 'https://drive.google.com/file/d/1z8wyOGl7On0cXqXaN7Kgqt9EkCr1CQKl/view?usp=drive_link',
   },
   {
+    id: 'video-2',
+    title: 'Momentum Studio',
+    subtitle: 'Automated Performance Funnels',
+    videoUrl: 'https://drive.google.com/file/d/1AgyAnn032VFDfEkgBmNvEugSuPku-CYC/view?usp=drive_link',
+  },
+  {
+    id: 'video-3',
+    title: 'Prime Active Gym',
+    subtitle: 'Multi-Channel Acquisition & Scale',
+    videoUrl: 'https://drive.google.com/file/d/15efqQljLF63utRf8Y1xzDF4lFN08iOpU/view?usp=drive_link',
+  },
+  {
+    id: 'video-4',
+    title: 'Apex E-Commerce',
+    subtitle: 'Marketplace & Shopify Scale',
+    videoUrl: 'https://drive.google.com/file/d/19VClRhFfp4g5K-LYWsHcFWJeW-pZQQzN/view?usp=sharing',
+  },
+];
+
+// Pure text testimonials data for the continuous marquee
+const TESTIMONIALS_DATA = [
+  {
     id: 'text-1',
-    type: 'text',
     quote:
       '"From the day we onboarded Karya Marketing, our acquisition funnels became far more organized and profitable. Their bilingual performance campaigns and daily ad optimizations delivered a 4.2x ROAS within 60 days, and their responsive support team has always been a reliable technology partner."',
     name: 'Ahmed Al Khalifa',
@@ -108,13 +127,7 @@ const TESTIMONIALS_DATA = [
     tint: 'tint-mint',
   },
   {
-    id: 'video-2',
-    type: 'video',
-    videoUrl: 'https://drive.google.com/file/d/1AgyAnn032VFDfEkgBmNvEugSuPku-CYC/view?usp=drive_link',
-  },
-  {
     id: 'text-2',
-    type: 'text',
     quote:
       '"Karya Marketing has simplified the way we scale our fitness studio. Automated membership funnels, high-converting creative ads, and weekly transparent attribution have significantly reduced our CPA while helping us stay closely connected with our members."',
     name: 'Fatima Al Dosari',
@@ -122,13 +135,7 @@ const TESTIMONIALS_DATA = [
     tint: 'tint-pink',
   },
   {
-    id: 'video-3',
-    type: 'video',
-    videoUrl: 'https://drive.google.com/file/d/15efqQljLF63utRf8Y1xzDF4lFN08iOpU/view?usp=drive_link',
-  },
-  {
     id: 'text-3',
-    type: 'text',
     quote:
       '"What impressed me most is how comprehensive their growth strategy is. From managing multi-channel marketplaces to engineering blazing-fast landing pages, everything added real measurable revenue to our business. Highly recommended for ambitious founders."',
     name: 'Yousef Al Mansoor',
@@ -136,9 +143,12 @@ const TESTIMONIALS_DATA = [
     tint: 'tint-mint',
   },
   {
-    id: 'video-4',
-    type: 'video',
-    videoUrl: 'https://drive.google.com/file/d/1z8wyOGl7On0cXqXaN7Kgqt9EkCr1CQKl/view?usp=drive_link',
+    id: 'text-4',
+    quote:
+      '"Their performance team engineered high-converting funnel pages and ad creatives that immediately cut our acquisition cost by 35%. Complete transparency, weekly reviews, and real compounding growth. Outstanding experience."',
+    name: 'Rashid Al-Kuwari',
+    role: 'Founder, Apex Retail & Commerce',
+    tint: 'tint-cream',
   },
 ];
 
@@ -221,10 +231,10 @@ const StatCounter = ({ end, suffix = '', duration = 1600, startWhen = false }) =
   );
 };
 
-// Video box component: displays thumbnail if available, otherwise fallback with white background & logo
-const TestimonialVideoCard = ({ videoUrl, onPlay }) => {
+// Tall Video Review Card Component for the horizontal Review section
+const VideoReviewCard = ({ video, onPlay }) => {
   const [thumbError, setThumbError] = useState(false);
-  const match = videoUrl ? videoUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) : null;
+  const match = video.videoUrl ? video.videoUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) : null;
   const fileId = match ? match[1] : '';
   const thumbUrl = fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w800` : '';
 
@@ -233,16 +243,16 @@ const TestimonialVideoCard = ({ videoUrl, onPlay }) => {
       e.preventDefault();
       e.stopPropagation();
     }
-    onPlay(videoUrl);
+    onPlay(video.videoUrl);
   };
 
   return (
     <div
-      className="testimonial-video-box"
+      className="video-review-card"
       onClick={handleTriggerPlay}
       role="button"
       tabIndex={0}
-      aria-label="Play video testimonial"
+      aria-label={`Play review: ${video.title}`}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -250,22 +260,26 @@ const TestimonialVideoCard = ({ videoUrl, onPlay }) => {
         }
       }}
     >
-      <div className="video-card-screen">
+      <div className="video-review-card-screen">
         {!thumbError && thumbUrl ? (
           <img
             src={thumbUrl}
-            alt="Video testimonial"
-            className="video-thumb-img"
+            alt={video.title}
+            className="video-review-thumb"
             onError={() => setThumbError(true)}
+            loading="lazy"
           />
         ) : (
-          <div className="video-logo-fallback">
-            <img src={logo} alt="Karya Logo" className="video-fallback-logo" />
+          <div className="video-review-logo-fallback">
+            <img src={logo} alt="Karya Logo" className="video-review-fallback-logo" />
           </div>
         )}
-        <div className="video-play-pulse">
-          <Play size={22} fill="currentColor" />
+
+        <div className="video-review-play-center">
+          <Play size={24} fill="currentColor" />
         </div>
+
+       
       </div>
     </div>
   );
@@ -286,9 +300,20 @@ const Home = ({ onOpenQueryModal }) => {
   const [aboutRef, aboutInView] = useInView({ threshold: 0.1 });
   const [statsRef, statsInView] = useInView({ threshold: 0.15 });
   const [whyRef, whyInView] = useInView({ threshold: 0.1 });
+  const [reviewsRef, reviewsInView] = useInView({ threshold: 0.1 });
   const [testimonialsRef, testimonialsInView] = useInView({ threshold: 0.1 });
   const [ctaRef, ctaInView] = useInView({ threshold: 0.1 });
-  const [footerRef, footerInView] = useInView({ threshold: 0.1 });
+
+  // Preload all services images on mount to eliminate loading lag on slides
+  useEffect(() => {
+    const serviceImages = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12];
+    serviceImages.forEach((src) => {
+      if (src) {
+        const img = new Image();
+        img.src = src;
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -316,10 +341,20 @@ const Home = ({ onOpenQueryModal }) => {
     return () => clearInterval(clockTimer);
   }, []);
 
-  // Manage body scroll when video popout modal is active
+  // Manage body scroll and Escape key when video popout modal is active
   useEffect(() => {
     if (activeVideoUrl) {
       document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+          setActiveVideoUrl(null);
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     } else {
       document.body.style.overflow = '';
     }
@@ -398,9 +433,8 @@ const Home = ({ onOpenQueryModal }) => {
               <button
                 type="button"
                 className="btn-hero-secondary"
-                onClick={() => handleCtaClick('Paid Marketing')}
               >
-                <span>Explore Services</span>
+               <Link to="/services" style={{textDecoration: "none", color: "inherit"}}> <span>Explore Services</span></Link>
                 <ArrowUpRight className="btn-arrow-tilt" size={18} strokeWidth={2.4} />
               </button>
             </div>
@@ -472,8 +506,7 @@ const Home = ({ onOpenQueryModal }) => {
               </div>
               <h2 className="services-showcase-title">Services that we provide</h2>
               <p className="services-showcase-desc">
-                Explore our range of design and digital growth services designed to go beyond aesthetics.
-                We specialize in crafting purposeful experiences that align with your brand's vision and goals.
+                Everything you need to grow online, under one roof. Paid ads, organic growth, marketplaces and websites. Pick one service or combine them.
               </p>
             </div>
 
@@ -495,6 +528,9 @@ const Home = ({ onOpenQueryModal }) => {
                         src={currentSlideImage}
                         alt={currentSlideCaption || currentService.title}
                         className="showcase-active-img"
+                        loading="eager"
+                        decoding="async"
+                        fetchPriority="high"
                       />
                     ) : (
                       <div className="showcase-empty-placeholder">
@@ -630,8 +666,8 @@ const Home = ({ onOpenQueryModal }) => {
                   className="btn-know-more"
                   onClick={() => handleCtaClick('General Inquiry')}
                 >
-                  <span>Know more</span>
-                  <ArrowUpRight size={18} strokeWidth={2.4} />
+             <Link to="/about" style={{textDecoration: "none", color: "inherit"}}><span >Know more</span></Link>
+                  <ArrowUpRight className="btn-arrow-tilt" size={18} strokeWidth={2.4} />
                 </button>
               </div>
             </div>
@@ -799,41 +835,60 @@ const Home = ({ onOpenQueryModal }) => {
         </div>
       </section>
 
-      {/* Testimonials Section (Continuous Seamless Loop Marquee with Text & Video Boxes) */}
+      {/* Video Reviews Section (Horizontal Swipeable Track, No Marquee, Tall Cards) */}
+      <section className="video-reviews-section" ref={reviewsRef} id="reviews">
+        <div className="video-reviews-container">
+          <div className={`video-reviews-header ${reviewsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            <div className="services-tag-badge">
+              <span className="services-tag-bullet"></span>
+              <span className="services-tag-text">STORIES</span>
+            </div>
+            <h2 className="video-reviews-title">Video Reviews</h2>
+            <p className="video-reviews-desc">
+              Watch real founders and business leaders share how Karya Marketing accelerated their acquisition,
+              streamlined operations, and scaled revenue.
+            </p>
+          </div>
+
+          <div className={`video-reviews-track ${reviewsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            {VIDEO_REVIEWS_DATA.map((video) => (
+              <VideoReviewCard
+                key={video.id}
+                video={video}
+                onPlay={setActiveVideoUrl}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section (Continuous Seamless Loop Marquee with Text Reviews Only) */}
       <section className="testimonials-marquee-section" ref={testimonialsRef} id="testimonials">
         <div className={`testimonials-header-block ${testimonialsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+          <div className="services-tag-badge">
+            <span className="services-tag-bullet"></span>
+            <span className="services-tag-text">CLIENT FEEDBACK</span>
+          </div>
           <h2 className="testimonials-main-title">Testimonials</h2>
         </div>
 
         <div className={`testimonials-marquee-outer ${testimonialsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
           <div className="testimonials-marquee-track">
-            {TESTIMONIALS_DATA.concat(TESTIMONIALS_DATA).map((item, idx) => {
-              if (item.type === 'video') {
-                return (
-                  <TestimonialVideoCard
-                    key={`testimonial-video-${item.id}-${idx}`}
-                    videoUrl={item.videoUrl}
-                    onPlay={setActiveVideoUrl}
-                  />
-                );
-              }
+            {TESTIMONIALS_DATA.concat(TESTIMONIALS_DATA).map((item, idx) => (
+              <div
+                key={`testimonial-${item.id}-${idx}`}
+                className={`testimonial-quote-box ${item.tint}`}
+              >
+                <p className="testimonial-quote-text">{item.quote}</p>
 
-              return (
-                <div
-                  key={`testimonial-${item.id}-${idx}`}
-                  className={`testimonial-quote-box ${item.tint}`}
-                >
-                  <p className="testimonial-quote-text">{item.quote}</p>
-
-                  <div className="testimonial-card-bottom">
-                    <div className="author-details">
-                      <strong className="author-name">{item.name}</strong>
-                      <span className="author-role">{item.role}</span>
-                    </div>
+                <div className="testimonial-card-bottom">
+                  <div className="author-details">
+                    <strong className="author-name">{item.name}</strong>
+                    <span className="author-role">{item.role}</span>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -887,95 +942,7 @@ const Home = ({ onOpenQueryModal }) => {
         </div>
       </section>
 
-      {/* Footer Section */}
-      <footer className="footer-main-section" ref={footerRef}>
-        <div className="footer-container">
-          <div className={`footer-top-grid ${footerInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
-            {/* Brand Column */}
-            <div className="footer-col footer-col-brand">
-              <a href="#" className="footer-brand-link">
-                <img src={logo} alt="Karya Logo" className="footer-logo-img" />
-              </a>
-              <p className="footer-brand-desc">
-                Karya Marketing is your full-service digital growth partner. We combine creative storytelling,
-                performance media buying, and enterprise web architecture to build brands that lead.
-              </p>
-              <div className="footer-badge-trust">
-                <span className="trust-indicator"></span>
-                <span>Trusted by 28+ Global Brands</span>
-              </div>
-            </div>
-
-            {/* Quick Links Column */}
-            <div className="footer-col">
-              <h4 className="footer-col-title">Navigation</h4>
-              <ul className="footer-links-list">
-                <li><a href="#" className="footer-link">Home</a></li>
-                <li><a href="#services" className="footer-link">Services</a></li>
-                <li><a href="#about" className="footer-link">About Us</a></li>
-                <li><a href="#why-choose-us" className="footer-link">Why Choose Us</a></li>
-                <li><a href="#testimonials" className="footer-link">Testimonials</a></li>
-              </ul>
-            </div>
-
-            {/* Core Services Column */}
-            <div className="footer-col">
-              <h4 className="footer-col-title">Services</h4>
-              <ul className="footer-links-list">
-                <li><a href="#services" className="footer-link">Paid Performance Ads</a></li>
-                <li><a href="#services" className="footer-link">Search Engine Optimization (SEO)</a></li>
-                <li><a href="#services" className="footer-link">E-Commerce & Marketplace</a></li>
-                <li><a href="#services" className="footer-link">Website & Web App Development</a></li>
-                <li><a href="#services" className="footer-link">Conversion Rate Optimization (CRO)</a></li>
-              </ul>
-            </div>
-
-            {/* Contact & Inquiry Column */}
-            <div className="footer-col">
-              <h4 className="footer-col-title">Get in Touch</h4>
-              <ul className="footer-contact-list">
-                <li className="contact-item">
-                  <Mail size={16} className="contact-icon" />
-                  <a href="mailto:hello@karyamarketing.com" className="footer-link">hello@karyamarketing.com</a>
-                </li>
-                <li className="contact-item">
-                  <Phone size={16} className="contact-icon" />
-                  <a href="tel:+919876543210" className="footer-link">+91 98765 43210</a>
-                </li>
-                <li className="contact-item">
-                  <MapPin size={16} className="contact-icon" />
-                  <span>Available Globally / Headquartered in India</span>
-                </li>
-              </ul>
-
-              <button
-                type="button"
-                className="btn-footer-query"
-                onClick={() => handleCtaClick('Footer Inquiry')}
-              >
-                <span>Book a Query</span>
-                <ArrowUpRight size={16} />
-              </button>
-            </div>
-          </div>
-
-          {/* Footer Bottom Bar */}
-          <div className={`footer-bottom-bar ${footerInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
-            <p className="footer-copyright">
-              &copy; {CURRENT_YEAR} Karya Marketing. All rights reserved.
-            </p>
-            <div className="footer-legal-links">
-              <a href="#" className="footer-sublink">Privacy Policy</a>
-              <span className="footer-dot-sep">&bull;</span>
-              <a href="#" className="footer-sublink">Terms of Service</a>
-              <span className="footer-dot-sep">&bull;</span>
-              <a href="#" className="footer-sublink">Cookie Settings</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      {/* Video Popout Modal (Pure video player, no extra frames, no extra text) */}
+      {/* Video Popout Modal (With dedicated top bar and easy mobile cancel) */}
       {activeVideoUrl && (
         <div
           className="video-modal-backdrop"
@@ -984,19 +951,22 @@ const Home = ({ onOpenQueryModal }) => {
           aria-modal="true"
         >
           <div className="video-modal-container" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className="video-modal-close-btn"
-              onClick={() => setActiveVideoUrl(null)}
-              aria-label="Close video"
-            >
-              <X size={26} strokeWidth={2.4} />
-            </button>
+            <div className="video-modal-header-bar">
+              <span className="video-modal-title"></span>
+              <button
+                type="button"
+                className="video-modal-close-btn"
+                onClick={() => setActiveVideoUrl(null)}
+                aria-label="Close video"
+              >
+                <X size={20} strokeWidth={2.4} />
+              </button>
+            </div>
 
             <div className="video-player-frame">
               <iframe
                 src={formatVideoEmbedUrl(activeVideoUrl)}
-                title="Client Video Testimonial"
+                title="Client Video Review"
                 allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope"
                 allowFullScreen
                 loading="eager"

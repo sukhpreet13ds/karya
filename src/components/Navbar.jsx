@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, ChevronDown, X } from 'lucide-react';
+import { NavLink, Link } from 'react-router-dom';
+import { ArrowUpRight, X } from 'lucide-react';
 import logo from '../assets/logo.png';
 
 export const servicesData = [
   {
     id: 'paid-marketing',
     title: 'PAID MARKETING',
-    desc: 'Performance ads across Meta, Google & LinkedIn targeted for maximum ROI.',
+    desc: 'Facebook, Google, LinkedIn & YouTube ads built for enquiries, WhatsApp chats and sales.',
   },
   {
     id: 'organic-marketing',
     title: 'ORGANIC MARKETING',
-    desc: 'SEO, data-driven content, and organic reach that builds lasting brand authority.',
+    desc: 'Rank higher on Google for buyer searches with SEO, content calendars and YouTube SEO.',
   },
   {
     id: 'ecommerce-management',
-    title: 'E-COMMERCE & MARKETPLACE MANAGEMENT',
-    desc: 'Comprehensive catalog, ad campaigns, and sales growth on Amazon, Flipkart & Shopify.',
+    title: 'E-COMMERCE & MARKETPLACES',
+    desc: 'Sell more on Amazon, Flipkart, Myntra & Nykaa with catalog setup, listing optimisation and ads.',
   },
   {
     id: 'website-development',
-    title: 'WEBSITE DEVELOPMENT & MANAGEMENT',
-    desc: 'High-speed, conversion-focused websites engineered for seamless scaling.',
+    title: 'WEBSITE DEVELOPMENT',
+    desc: 'Shopify, WordPress, .NET & custom sites built for speed, mobile design and tracking setup.',
   },
 ];
 
 const Navbar = ({ onOpenQueryModal }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [desktopMegaOpen, setDesktopMegaOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   // Prevent background scrolling when mobile menu is active
   useEffect(() => {
@@ -43,19 +42,6 @@ const Navbar = ({ onOpenQueryModal }) => {
     };
   }, [mobileMenuOpen]);
 
-  const handleServiceClick = (e, serviceTitle) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    setDesktopMegaOpen(false);
-    if (onOpenQueryModal) {
-      onOpenQueryModal(serviceTitle);
-    }
-  };
-
-  const handleNavClick = (e) => {
-    e.preventDefault();
-  };
-
   const handleBookQueryClick = () => {
     setMobileMenuOpen(false);
     if (onOpenQueryModal) {
@@ -67,74 +53,45 @@ const Navbar = ({ onOpenQueryModal }) => {
     <header className="navbar-header">
       <div className="navbar-container">
         {/* Brand Logo */}
-        <a href="#" className="navbar-brand" onClick={handleNavClick}>
+        <Link to="/" className="navbar-brand">
           <img src={logo} alt="Karya Logo" className="navbar-logo-img" />
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <nav className="navbar-desktop-nav">
           <ul className="nav-links-list">
             <li className="nav-item">
-              <a href="#home" className="nav-link" onClick={handleNavClick}>
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#about" className="nav-link" onClick={handleNavClick}>
-                About
-              </a>
-            </li>
-
-            {/* Services with Mega Menu */}
-            <li
-              className={`nav-item nav-item-has-mega ${desktopMegaOpen ? 'mega-active' : ''}`}
-              onMouseEnter={() => setDesktopMegaOpen(true)}
-              onMouseLeave={() => setDesktopMegaOpen(false)}
-            >
-              <button
-                type="button"
-                className="nav-link nav-link-btn"
-                onClick={() => setDesktopMegaOpen((prev) => !prev)}
-                aria-expanded={desktopMegaOpen}
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
               >
-                <span>Services</span>
-                <ChevronDown
-                  className={`chevron-icon ${desktopMegaOpen ? 'rotated' : ''}`}
-                  size={15}
-                  strokeWidth={2.4}
-                />
-              </button>
-
-              {/* Desktop Mega Menu Dropdown */}
-              <div className={`desktop-mega-menu ${desktopMegaOpen ? 'is-visible' : ''}`}>
-                <div className="mega-menu-inner">
-               
-
-                  <div className="mega-services-grid">
-                    {servicesData.map((svc, idx) => (
-                      <a
-                        key={svc.id}
-                        href="#"
-                        className="mega-service-card"
-                        onClick={(e) => handleServiceClick(e, svc.title)}
-                      >
-                        <div className="mega-card-top">
-                          <span className="mega-card-number">0{idx + 1}</span>
-                          <ArrowUpRight className="mega-arrow-tilt" size={17} strokeWidth={2.4} />
-                        </div>
-                        <h4 className="mega-card-title">{svc.title}</h4>
-                        <p className="mega-card-desc">{svc.desc}</p>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                Home
+              </NavLink>
             </li>
-
             <li className="nav-item">
-              <a href="#contact" className="nav-link" onClick={handleNavClick}>
+              <NavLink
+                to="/about"
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
+                About
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/services"
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
+                Services
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/contact"
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
                 Contact
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -176,7 +133,7 @@ const Navbar = ({ onOpenQueryModal }) => {
           >
             {/* Top close bar (NO LOGO inside menu panel as requested) */}
             <div className="mobile-menu-header">
-             <div></div>
+              <div></div>
               <button
                 type="button"
                 className="mobile-menu-close"
@@ -190,61 +147,48 @@ const Navbar = ({ onOpenQueryModal }) => {
             {/* Mobile Nav Links */}
             <ul className="mobile-nav-list">
               <li className="mobile-nav-item">
-                <a href="#home" className="mobile-nav-link" onClick={handleNavClick}>
+                <NavLink
+                  to="/"
+                  end
+                  className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   <span>Home</span>
                   <ArrowUpRight className="mobile-tilt-icon" size={20} strokeWidth={2.4} />
-                </a>
+                </NavLink>
               </li>
 
               <li className="mobile-nav-item">
-                <a href="#about" className="mobile-nav-link" onClick={handleNavClick}>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   <span>About</span>
                   <ArrowUpRight className="mobile-tilt-icon" size={20} strokeWidth={2.4} />
-                </a>
-              </li>
-
-              {/* Services Item with Dropdown Arrow Icon */}
-              <li className="mobile-nav-item mobile-services-accordion">
-                <button
-                  type="button"
-                  className="mobile-nav-link mobile-services-toggle"
-                  onClick={() => setMobileServicesOpen((prev) => !prev)}
-                >
-                  <span>Services</span>
-                  <ChevronDown
-                    className={`mobile-dropdown-arrow ${mobileServicesOpen ? 'rotated' : ''}`}
-                    size={20}
-                    strokeWidth={2.4}
-                  />
-                </button>
-
-                {/* Sub Items */}
-                {mobileServicesOpen && (
-                  <div className="mobile-subservices-container">
-                    {servicesData.map((svc, i) => (
-                      <a
-                        key={svc.id}
-                        href="#"
-                        className="mobile-subservice-card"
-                        onClick={(e) => handleServiceClick(e, svc.title)}
-                      >
-                        <div className="mobile-sub-header">
-                          <span className="mobile-sub-num">0{i + 1}</span>
-                          <span className="mobile-sub-title">{svc.title}</span>
-                          <ArrowUpRight className="mobile-sub-tilt" size={17} strokeWidth={2.4} />
-                        </div>
-                        <p className="mobile-sub-desc">{svc.desc}</p>
-                      </a>
-                    ))}
-                  </div>
-                )}
+                </NavLink>
               </li>
 
               <li className="mobile-nav-item">
-                <a href="#contact" className="mobile-nav-link" onClick={handleNavClick}>
+                <NavLink
+                  to="/services"
+                  className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span>Services</span>
+                  <ArrowUpRight className="mobile-tilt-icon" size={20} strokeWidth={2.4} />
+                </NavLink>
+              </li>
+
+              <li className="mobile-nav-item">
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   <span>Contact</span>
                   <ArrowUpRight className="mobile-tilt-icon" size={20} strokeWidth={2.4} />
-                </a>
+                </NavLink>
               </li>
             </ul>
 

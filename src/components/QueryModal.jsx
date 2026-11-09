@@ -119,7 +119,7 @@ const QueryModal = ({ isOpen, onClose, initialService = '' }) => {
               type="tel"
               name="number"
               required
-              placeholder="e.g. +91 98765 43210"
+              placeholder="e.g. +91 9896093951"
               value={formData.number}
               onChange={handleChange}
             />

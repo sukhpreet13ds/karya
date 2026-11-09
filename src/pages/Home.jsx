@@ -7,8 +7,6 @@ import {
   X
 } from 'lucide-react';
 import 'animate.css';
-import { servicesData } from '../components/Navbar';
-import mobileImg from '../assets/mobile.png';
 import logo from '../assets/logo.png';
 import s1 from '../assets/s1.jpg'
 import s2 from '../assets/s2.jpg'
@@ -24,6 +22,7 @@ import s11 from '../assets/S11.jpg'
 import s12 from '../assets/S12.jpg'
 import aboutHome from '../assets/about.png'
 import  {Link} from 'react-router-dom';
+import CtaSection from '../components/CtaSection';
 
 const ROTATING_WORDS = ['Forward.', 'Beyond.', 'Higher.'];
 
@@ -88,67 +87,374 @@ const SERVICES_SHOWCASE_DATA = [
   },
 ];
 
-// Standalone Video Reviews (Displayed in dedicated Review section with taller aspect ratio)
+// Standalone Video Reviews (from review.txt with titles, descriptions & tall video frames)
 const VIDEO_REVIEWS_DATA = [
   {
     id: 'video-1',
-    title: 'Elite Fitness Club',
-    subtitle: 'Scaling 4.2x ROAS in 60 Days',
+    title: 'Dr. Shikha Atri — Founder, True Smilez Dental Clinic, Chandigarh',
+    description:
+      'For over a year, we ran Google Ads for True Smilez, putting the clinic in front of people searching for a dentist nearby. The result: a steady flow of patient calls, month after month. Hear Dr. Shikha share her experience with Karya.',
     videoUrl: 'https://drive.google.com/file/d/1z8wyOGl7On0cXqXaN7Kgqt9EkCr1CQKl/view?usp=drive_link',
   },
   {
     id: 'video-2',
-    title: 'Momentum Studio',
-    subtitle: 'Automated Performance Funnels',
+    title: 'Jesse Gosse — Founder, Medical Digitals, Europe',
+    description:
+      "Medical Digitals is a healthcare marketing firm based in Europe. They started with us for SEO, and over two years brought us into their Google Ads and LinkedIn campaigns too. Here's Jesse on why they keep growing with Karya.",
     videoUrl: 'https://drive.google.com/file/d/1AgyAnn032VFDfEkgBmNvEugSuPku-CYC/view?usp=drive_link',
   },
   {
     id: 'video-3',
-    title: 'Prime Active Gym',
-    subtitle: 'Multi-Channel Acquisition & Scale',
+    title: 'Founder — DC Travellers, Chandigarh',
+    description:
+      "DC Travellers is a travel agency we've worked with on Google and Meta Ads, bringing in steady travel enquiries. Hear from the founder on what working with Karya looks like.",
     videoUrl: 'https://drive.google.com/file/d/15efqQljLF63utRf8Y1xzDF4lFN08iOpU/view?usp=drive_link',
   },
   {
     id: 'video-4',
-    title: 'Apex E-Commerce',
-    subtitle: 'Marketplace & Shopify Scale',
+    title: 'Arjun — Founder, HCP Compass, United Kingdom',
+    description:
+      "We designed and built the HCP Compass website from scratch and handle its SEO, so the right audience finds them on Google. Also work as their strategist for social media . Here's Arjun on partnering with Karya.",
     videoUrl: 'https://drive.google.com/file/d/19VClRhFfp4g5K-LYWsHcFWJeW-pZQQzN/view?usp=sharing',
   },
 ];
 
-// Pure text testimonials data for the continuous marquee
+// Client Results data from review.txt (16 items: max 4x4 on desktop, 2x2 on mobile)
+const CLIENT_RESULTS_DATA = [
+  {
+    id: 'res-1',
+    metric: '₹10 Lakh → ₹2 Crore',
+    client: 'VIP Number Shop · eCommerce · India',
+    description:
+      'We rebuilt targeting around high-intent buyers and positioned the brand on exclusivity, not discounts. Achieved a 20x return on ad spend.',
+    services: 'Meta Ads · Google Ads',
+  },
+  {
+    id: 'res-2',
+    metric: '₹1.99 Lakh in 8 Days',
+    client: 'Flawnt · Pearl Jewellery · India',
+    description:
+      'A full Meta Ads setup with CAPI and catalog feed drove 46% week-over-week sales growth from new customers.',
+    services: 'Meta Ads · Google Ads',
+  },
+  {
+    id: 'res-3',
+    metric: 'Up to 3.64x ROAS',
+    client: 'Pro Ultimate Sports · Sportswear · India',
+    description:
+      'Launched 88 campaigns, scaling each product line independently and reaching 11.2 million people.',
+    services: 'Meta Ads · Automation',
+  },
+  {
+    id: 'res-4',
+    metric: '2.3 Lakh Profile Visits at ₹0.93',
+    client: 'CEAT Specialty · Industrial · Global',
+    description:
+      'Ran country-specific campaigns across Germany, UK, France, North America, and India in collaboration with a partner agency.',
+    services: 'Google Ads · Meta Ads · LinkedIn Ads',
+  },
+  {
+    id: 'res-5',
+    metric: '2 Years, Still Growing Together',
+    client: 'Medical Digitals · Healthcare Marketing · Europe',
+    description:
+      'What started as SEO gradually expanded into Google Ads and LinkedIn campaigns, building a long-term marketing partnership.',
+    services: 'SEO · Google Ads · LinkedIn Ads',
+  },
+  {
+    id: 'res-6',
+    metric: '$17K → $47.9K Revenue',
+    client: 'Dura Craft · Furniture · Australia',
+    description:
+      'Refined campaigns and tested creatives that directed potential buyers straight to product pages.',
+    services: 'Meta Ads · Google Ads',
+  },
+  {
+    id: 'res-7',
+    metric: '1,967 Leads for ₹66.5K',
+    client: 'AppCartify · SaaS · UAE, India, USA',
+    description:
+      'Improved targeting and creatives for a Shopify mobile-app product to generate high-quality leads.',
+    services: 'Meta Ads',
+  },
+  {
+    id: 'res-8',
+    metric: '939 Leads at $3.65 Each',
+    client: 'VIS Learning · Education · Australia',
+    description:
+      'Executed targeted lead generation campaigns for an educational visa consultancy.',
+    services: 'Meta Ads',
+  },
+  {
+    id: 'res-9',
+    metric: '13x ROAS',
+    client: 'Rangeela · Clothing · Canada',
+    description:
+      'Ran targeted advertising campaigns for an online women’s clothing brand, focusing on performance and conversions.',
+    services: 'Meta Ads · Google Ads',
+  },
+  {
+    id: 'res-10',
+    metric: '314K → 3.57M Views',
+    client: 'ThinkJr · Kids Education · USA',
+    description:
+      'Reduced cost per view by 75% while increasing clicks from 455 to 12.5K through optimized YouTube campaigns.',
+    services: 'YouTube Ads',
+  },
+  {
+    id: 'res-11',
+    metric: '591 Leads at ₹50 Each',
+    client: 'Emerald Heights Schools · Education · India',
+    description:
+      'Generated admission leads through targeted campaigns for two schools in Indore.',
+    services: 'Meta Ads',
+  },
+  {
+    id: 'res-12',
+    metric: '244K Clicks, 1.89K Conversions',
+    client: 'GoMage · eCommerce Agency · USA',
+    description:
+      'Managed 12 months of Google Ads campaigns, achieving an average cost per click of just $0.20.',
+    services: 'Google Ads',
+  },
+  {
+    id: 'res-13',
+    metric: 'A Year of Steady Patient Calls',
+    client: 'True Smilez · Dental Clinic · Mohali',
+    description:
+      'Managed Google Ads campaigns for over a year, consistently bringing local patients to the dental clinic.',
+    services: 'Google Ads',
+  },
+  {
+    id: 'res-14',
+    metric: 'A Full Marketing Team in One Partner',
+    client: 'Bhealix · Skincare · India',
+    description:
+      'Delivered an integrated marketing solution covering strategy, social media, Meta Ads, Google Ads, and overall marketing management.',
+    services: 'Full-Service Marketing',
+  },
+  {
+    id: 'res-15',
+    metric: 'Meta Ads + Social Media Direction',
+    client: 'Rajat Ganga Jewellers · Jewellery · Jaipur',
+    description:
+      'Provided Meta Ads expertise and social media consulting to strengthen the brand’s digital presence.',
+    services: 'Meta Ads · Social Media',
+  },
+  {
+    id: 'res-16',
+    metric: 'One Brand, Two Markets',
+    client: 'Rett Rose · Footwear · India & UK',
+    description:
+      'Managed Meta Ads and social media strategies to maintain consistent brand communication across the Indian and UK markets.',
+    services: 'Meta Ads · Social Media',
+  },
+];
+
+// Industries We've Worked With data from review.txt
+const INDUSTRIES_DATA = [
+  {
+    id: 'ind-1',
+    industry: 'Dental & Healthcare',
+    brands: ['True Smilez', 'Dental IQ', 'The Dental Masters', 'Medical Digitals'],
+  },
+  {
+    id: 'ind-2',
+    industry: 'Jewellery',
+    brands: ['Flawnt', 'Rajat Ganga Jewellers'],
+  },
+  {
+    id: 'ind-3',
+    industry: 'Fashion, Footwear & Sportswear',
+    brands: ['Pro Ultimate Sports', 'Rett Rose', 'Rangeela'],
+  },
+  {
+    id: 'ind-4',
+    industry: 'Skincare',
+    brands: ['Bhealix'],
+  },
+  {
+    id: 'ind-5',
+    industry: 'Fitness',
+    brands: ['Pro Ultimate Gyms'],
+  },
+  {
+    id: 'ind-6',
+    industry: 'eCommerce',
+    brands: ['VIP Number Shop', 'Dura Craft', 'Healthy Bedroom'],
+  },
+  {
+    id: 'ind-7',
+    industry: 'Education',
+    brands: ['Emerald Heights Schools', 'VIS Learning', 'ThinkJr'],
+  },
+  {
+    id: 'ind-8',
+    industry: 'SaaS & Software',
+    brands: ['AppCartify', 'ILN', 'GoMage'],
+  },
+  {
+    id: 'ind-9',
+    industry: 'Travel',
+    brands: ['DC Travellers'],
+  },
+  {
+    id: 'ind-10',
+    industry: 'Music',
+    brands: ['ShabadGuru', 'UK artists'],
+  },
+  {
+    id: 'ind-11',
+    industry: 'Automotive & Industrial',
+    brands: ['CEAT Specialty', 'CAMSO'],
+  },
+];
+
+// Hero right side 4 highlight stat cards from review.txt
+const HERO_HIGHLIGHT_CARDS = [
+  {
+    id: 'hero-stat-1',
+    number: '01',
+    bigNumber: '₹10L → ₹2Cr',
+    label: 'Revenue from ad spend',
+    smallLine: 'VIP Number Shop · 20x ROAS',
+  },
+  {
+    id: 'hero-stat-2',
+    number: '02',
+    bigNumber: '₹1.99L',
+    label: 'Sales in 8 days',
+    smallLine: 'Flawnt · Pearl Jewellery',
+  },
+  {
+    id: 'hero-stat-3',
+    number: '03',
+    bigNumber: '11.2M',
+    label: 'People reached',
+    smallLine: 'Pro Ultimate Sports · 3.64x ROAS',
+  },
+  {
+    id: 'hero-stat-4',
+    number: '04',
+    bigNumber: '6 Countries',
+    label: 'Countries served',
+    smallLine: '$1.5M+ ad spend managed',
+  },
+];
+
+// Pure text testimonials data from review.txt for continuous marquee
 const TESTIMONIALS_DATA = [
   {
-    id: 'text-1',
+    id: 'review-1',
+    name: 'Pro Ultimate Sports',
+    role: "Men's Sportswear, India",
     quote:
-      '"From the day we onboarded Karya Marketing, our acquisition funnels became far more organized and profitable. Their bilingual performance campaigns and daily ad optimizations delivered a 4.2x ROAS within 60 days, and their responsive support team has always been a reliable technology partner."',
-    name: 'Ahmed Al Khalifa',
-    role: 'Owner, Elite Fitness Club, Manama',
+      'This fitness apparel brand needed every product line to sell on its own. We built 88 separate Meta campaigns, added WhatsApp abandoned-cart automation, and reached 11.2M people, with top campaigns at 3.64x ROAS.',
     tint: 'tint-mint',
   },
   {
-    id: 'text-2',
+    id: 'review-2',
+    name: 'Flawnt',
+    role: 'Pearl Jewellery, India',
     quote:
-      '"Karya Marketing has simplified the way we scale our fitness studio. Automated membership funnels, high-converting creative ads, and weekly transparent attribution have significantly reduced our CPA while helping us stay closely connected with our members."',
-    name: 'Fatima Al Dosari',
-    role: 'Founder, Momentum Fitness Studio, Muharraq',
+      'Flawnt wanted growth from new customers, not just retargeting. With a full Meta Ads setup, CAPI and catalog feed, they made ₹1.99 lakh in sales in 8 days, up 46% week over week.',
     tint: 'tint-pink',
   },
   {
-    id: 'text-3',
+    id: 'review-3',
+    name: 'VIP Number Shop',
+    role: 'eCommerce, India',
     quote:
-      '"What impressed me most is how comprehensive their growth strategy is. From managing multi-channel marketplaces to engineering blazing-fast landing pages, everything added real measurable revenue to our business. Highly recommended for ambitious founders."',
-    name: 'Yousef Al Mansoor',
-    role: 'Owner, Prime Active Gym, Riffa',
+      "Their ads weren't showing why a VIP number is special. We repositioned the brand on exclusivity and targeted business owners, turning ₹10 lakh of ad spend into ₹2 crore in revenue.",
+    tint: 'tint-cream',
+  },
+  {
+    id: 'review-4',
+    name: 'Rajat Ganga Jewellers',
+    role: 'Jewellery, Jaipur',
+    quote:
+      'We worked as their Meta Ads specialists and social media consultants, shaping how the brand shows up and sells online.',
     tint: 'tint-mint',
   },
   {
-    id: 'text-4',
+    id: 'review-5',
+    name: 'Bhealix',
+    role: 'Skincare, India',
     quote:
-      '"Their performance team engineered high-converting funnel pages and ad creatives that immediately cut our acquisition cost by 35%. Complete transparency, weekly reviews, and real compounding growth. Outstanding experience."',
-    name: 'Rashid Al-Kuwari',
-    role: 'Founder, Apex Retail & Commerce',
+      'Bhealix got a complete marketing team in one partner: strategy, social media, Meta Ads, Google Ads and day-to-day management.',
+    tint: 'tint-pink',
+  },
+  {
+    id: 'review-6',
+    name: 'Pro Ultimate Gyms',
+    role: 'Fitness Franchise, India',
+    quote:
+      'We ran Meta and Google Ads with social media to keep new member enquiries coming in across their gyms.',
     tint: 'tint-cream',
+  },
+  {
+    id: 'review-7',
+    name: 'Dura Craft',
+    role: 'Furniture, Australia',
+    quote:
+      'Sales were stuck despite good products. Refined campaigns and tested creatives turned $17K of ad spend into $47.9K in revenue.',
+    tint: 'tint-mint',
+  },
+  {
+    id: 'review-8',
+    name: 'AppCartify',
+    role: 'SaaS, UAE, India & USA',
+    quote:
+      'Better targeting and creatives brought 1,967 leads for their Shopify app on just ₹66.5K.',
+    tint: 'tint-pink',
+  },
+  {
+    id: 'review-9',
+    name: 'VIS Learning',
+    role: 'Visa Consultancy, Australia',
+    quote:
+      "Their ads weren't reaching the right students. We generated 939 quality leads at $3.65 each.",
+    tint: 'tint-cream',
+  },
+  {
+    id: 'review-10',
+    name: 'Rangeela',
+    role: "Women's Clothing, Canada",
+    quote:
+      'Low engagement turned into a 13x return on ad spend with a focused campaign strategy.',
+    tint: 'tint-mint',
+  },
+  {
+    id: 'review-11',
+    name: 'ThinkJr',
+    role: 'Kids Education, USA',
+    quote:
+      'YouTube views grew from 314K to 3.57M while cost per view dropped 75%.',
+    tint: 'tint-pink',
+  },
+  {
+    id: 'review-12',
+    name: 'Emerald Heights Schools',
+    role: 'Education, Indore',
+    quote:
+      'Admission campaigns brought 591 leads at ₹50 each for two schools.',
+    tint: 'tint-cream',
+  },
+  {
+    id: 'review-13',
+    name: 'GoMage',
+    role: 'eCommerce Agency, USA',
+    quote:
+      '12 months of Google Ads delivered 244K clicks and 1,890 conversions at $0.20 per click.',
+    tint: 'tint-mint',
+  },
+  {
+    id: 'review-14',
+    name: 'CEAT Specialty',
+    role: 'Industrial Tyres, Global',
+    quote:
+      'With a partner agency, we ran country-wise campaigns across 5 markets, including 2.3 lakh Instagram profile visits at ₹0.93 each.',
+    tint: 'tint-pink',
   },
 ];
 
@@ -195,7 +501,14 @@ const useInView = (options = {}, initial = false) => {
 };
 
 // Counter component for animated stats (0 -> target value)
-const StatCounter = ({ end, suffix = '', duration = 1600, startWhen = false }) => {
+const StatCounter = ({
+  end,
+  prefix = '',
+  suffix = '',
+  decimals = 0,
+  duration = 1600,
+  startWhen = false,
+}) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -209,7 +522,8 @@ const StatCounter = ({ end, suffix = '', duration = 1600, startWhen = false }) =
       const progress = Math.min((timestamp - startTime) / duration, 1);
       // Smooth easeOutCubic curve
       const easeProgress = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(easeProgress * end));
+      const currentVal = easeProgress * end;
+      setCount(decimals > 0 ? parseFloat(currentVal.toFixed(decimals)) : Math.floor(currentVal));
 
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
@@ -221,11 +535,14 @@ const StatCounter = ({ end, suffix = '', duration = 1600, startWhen = false }) =
     animationFrame = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(animationFrame);
-  }, [end, duration, startWhen]);
+  }, [end, duration, startWhen, decimals]);
+
+  const displayCount = decimals > 0 ? count.toFixed(decimals) : count;
 
   return (
     <span>
-      {count}
+      {prefix}
+      {displayCount}
       {suffix}
     </span>
   );
@@ -247,39 +564,44 @@ const VideoReviewCard = ({ video, onPlay }) => {
   };
 
   return (
-    <div
-      className="video-review-card"
-      onClick={handleTriggerPlay}
-      role="button"
-      tabIndex={0}
-      aria-label={`Play review: ${video.title}`}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleTriggerPlay();
-        }
-      }}
-    >
-      <div className="video-review-card-screen">
-        {!thumbError && thumbUrl ? (
-          <img
-            src={thumbUrl}
-            alt={video.title}
-            className="video-review-thumb"
-            onError={() => setThumbError(true)}
-            loading="lazy"
-          />
-        ) : (
-          <div className="video-review-logo-fallback">
-            <img src={logo} alt="Karya Logo" className="video-review-fallback-logo" />
+    <div className="video-review-slide-item">
+      <div
+        className="video-review-card"
+        onClick={handleTriggerPlay}
+        role="button"
+        tabIndex={0}
+        aria-label={`Play review: ${video.title}`}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleTriggerPlay();
+          }
+        }}
+      >
+        <div className="video-review-card-screen">
+          {!thumbError && thumbUrl ? (
+            <img
+              src={thumbUrl}
+              alt={video.title}
+              className="video-review-thumb"
+              onError={() => setThumbError(true)}
+              loading="lazy"
+            />
+          ) : (
+            <div className="video-review-logo-fallback">
+              <img src={logo} alt="Karya Logo" className="video-review-fallback-logo" />
+            </div>
+          )}
+
+          <div className="video-review-play-center">
+            <Play size={24} fill="currentColor" />
           </div>
-        )}
-
-        <div className="video-review-play-center">
-          <Play size={24} fill="currentColor" />
         </div>
+      </div>
 
-       
+      <div className="video-review-content-below">
+        <h4 className="video-review-caption-title">{video.title}</h4>
+        <p className="video-review-caption-desc">{video.description}</p>
       </div>
     </div>
   );
@@ -291,7 +613,8 @@ const Home = ({ onOpenQueryModal }) => {
   const [activeSlideIdx, setActiveSlideIdx] = useState(0);
   const [editorialImage, _setEditorialImage] = useState(aboutHome); // Empty for now, user can insert URL later
   const [activeVideoUrl, setActiveVideoUrl] = useState(null);
-  const [currentTime, setCurrentTime] = useState('');
+  const [ourTime, setOurTime] = useState('');
+  const [userTime, setUserTime] = useState('');
 
   // Scroll reveal refs for each section
   const [heroRef, heroInView] = useInView({ threshold: 0.05 }, true);
@@ -300,9 +623,10 @@ const Home = ({ onOpenQueryModal }) => {
   const [aboutRef, aboutInView] = useInView({ threshold: 0.1 });
   const [statsRef, statsInView] = useInView({ threshold: 0.15 });
   const [whyRef, whyInView] = useInView({ threshold: 0.1 });
+  const [resultsRef, resultsInView] = useInView({ threshold: 0.08 });
   const [reviewsRef, reviewsInView] = useInView({ threshold: 0.1 });
   const [testimonialsRef, testimonialsInView] = useInView({ threshold: 0.1 });
-  const [ctaRef, ctaInView] = useInView({ threshold: 0.1 });
+  const [industriesRef, industriesInView] = useInView({ threshold: 0.1 });
 
   // Preload all services images on mount to eliminate loading lag on slides
   useEffect(() => {
@@ -323,11 +647,31 @@ const Home = ({ onOpenQueryModal }) => {
     return () => clearInterval(timer);
   }, []);
 
-  // Update clock for editorial top bar
+  // Update clocks for editorial top bar: Karya office time (IST) + Visitor's local browser time
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      setCurrentTime(
+      try {
+        setOurTime(
+          now.toLocaleTimeString('en-US', {
+            timeZone: 'Asia/Kolkata',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+          })
+        );
+      } catch {
+        setOurTime(
+          now.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+          })
+        );
+      }
+      setUserTime(
         now.toLocaleTimeString('en-US', {
           hour: '2-digit',
           minute: '2-digit',
@@ -416,8 +760,7 @@ const Home = ({ onOpenQueryModal }) => {
             </h1>
 
             <p className="hero-description">
-              We combine creativity, strategy, and technology to help brands reach
-              the right audience, build trust, and achieve sustainable growth.
+              Spent on ads that didn’t sell? We fix what’s broken, from targeting and creatives to your funnel, so every rupee starts working.
             </p>
 
             <div className="hero-cta-group">
@@ -440,35 +783,38 @@ const Home = ({ onOpenQueryModal }) => {
             </div>
           </div>
 
-          {/* Right Side: Four Boxes Grid with Services Names */}
+          {/* Right Side: Four Highlight Stat Boxes Grid */}
           <div className={`hero-services-right ${heroInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
             <div className="hero-services-grid">
-              {servicesData.map((service, index) => (
+              {HERO_HIGHLIGHT_CARDS.map((card) => (
                 <div
-                  key={service.id}
+                  key={card.id}
                   className="hero-service-card"
-                  onClick={() => handleServiceCardClick(service.title)}
+                  onClick={() => handleServiceCardClick(card.label)}
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
-                      handleServiceCardClick(service.title);
+                      handleServiceCardClick(card.label);
                     }
                   }}
                 >
                   <div className="card-top-row">
-                    <span className="service-number">0{index + 1}</span>
+                    <span className="service-number">{card.number}</span>
                     <div className="service-tilt-badge">
                       <ArrowUpRight className="service-tilt-arrow" size={18} strokeWidth={2.4} />
                     </div>
                   </div>
 
-                  <h3 className="service-card-title">{service.title}</h3>
-                  <p className="service-card-desc">{service.desc}</p>
+                  <div className="hero-card-stat-block">
+                    <h3 className="hero-card-big-number">{card.bigNumber}</h3>
+                    <p className="hero-card-label">{card.label}</p>
+                    <span className="hero-card-small-line">{card.smallLine}</span>
+                  </div>
 
                   <div className="card-bottom-action">
-                    <span className="card-action-text">Enquire Now</span>
+                    <span className="card-action-text">See the case study</span>
                     <span className="card-action-line"></span>
                   </div>
                 </div>
@@ -506,7 +852,7 @@ const Home = ({ onOpenQueryModal }) => {
               </div>
               <h2 className="services-showcase-title">Services that we provide</h2>
               <p className="services-showcase-desc">
-                Everything you need to grow online, under one roof. Paid ads, organic growth, marketplaces and websites. Pick one service or combine them.
+                Four ways we turn your marketing spend into customers. Pick one, or let us run them all.
               </p>
             </div>
 
@@ -615,9 +961,14 @@ const Home = ({ onOpenQueryModal }) => {
             <div className="editorial-meta-bar">
               <span className="editorial-meta-item">DIGITAL GROWTH PARTNER</span>
               <span className="editorial-meta-item">INNOVATION & PERFORMANCE</span>
-              <span className="editorial-meta-item editorial-time-pill">
-                OUR TIME {currentTime || '3:24:50 PM'}
-              </span>
+              <div className="editorial-time-stack">
+                <span className="editorial-meta-item editorial-time-pill">
+                  OUR TIME: {ourTime || '3:24:50 PM'}
+                </span>
+                <span className="editorial-meta-item editorial-time-pill user-time-pill">
+                  YOUR TIME: {userTime || '3:24:50 PM'}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -643,16 +994,16 @@ const Home = ({ onOpenQueryModal }) => {
                 <span className="founders-label">CO-FOUNDERS</span>
                 <div className="founders-chips">
                   <div className="founder-chip">
-                    <span className="founder-avatar-initial">S</span>
+                    {/* <span className="founder-avatar-initial">S</span> */}
                     <div className="founder-info">
-                      <strong className="founder-name">Mr. Surya Thakur</strong>
+                      <strong className="founder-name">Surya Thakur</strong>
                       <span className="founder-role">Co-Founder & Growth Strategist</span>
                     </div>
                   </div>
                   <div className="founder-chip">
-                    <span className="founder-avatar-initial">K</span>
+                    {/* <span className="founder-avatar-initial">K</span> */}
                     <div className="founder-info">
-                      <strong className="founder-name">Miss. Kanishtha</strong>
+                      <strong className="founder-name">Kanishtha</strong>
                       <span className="founder-role">Co-Founder & Creative Director</span>
                     </div>
                   </div>
@@ -664,7 +1015,6 @@ const Home = ({ onOpenQueryModal }) => {
                 <button
                   type="button"
                   className="btn-know-more"
-                  onClick={() => handleCtaClick('General Inquiry')}
                 >
              <Link to="/about" style={{textDecoration: "none", color: "inherit"}}><span >Know more</span></Link>
                   <ArrowUpRight className="btn-arrow-tilt" size={18} strokeWidth={2.4} />
@@ -700,33 +1050,31 @@ const Home = ({ onOpenQueryModal }) => {
           {/* Bottom Stats Section with animated counter effect */}
           <div className={`editorial-stats-row ${statsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`} ref={statsRef}>
             <div className="editorial-stat-card">
-              <span className="stat-category-tag">COMPANIES</span>
+              <span className="stat-category-tag">AD SPEND MANAGED</span>
               <h3 className="stat-large-number">
-                <StatCounter end={28} suffix="+" startWhen={statsInView} />
+                <StatCounter prefix="$" end={1.5} decimals={1} suffix="M+" startWhen={statsInView} />
               </h3>
-              <p className="stat-desc-text">
-                GLOBALLY AVAILABLE, EMBRACING A VARIETY OF CULTURES & VERTICALS
-              </p>
             </div>
 
             <div className="editorial-stat-card">
-              <span className="stat-category-tag">AWARDS</span>
+              <span className="stat-category-tag">PEAK ROAS</span>
               <h3 className="stat-large-number">
-                <StatCounter end={39} suffix="+" startWhen={statsInView} />
+                <StatCounter end={20} suffix="x" startWhen={statsInView} />
               </h3>
-              <p className="stat-desc-text">
-                RECOGNIZED FOR EXCEPTIONAL CREATIVITY & DATA-DRIVEN PERFORMANCE
-              </p>
             </div>
 
             <div className="editorial-stat-card">
-              <span className="stat-category-tag">PROJECTS</span>
+              <span className="stat-category-tag">COUNTRIES SERVED</span>
               <h3 className="stat-large-number">
-                <StatCounter end={150} suffix="+" startWhen={statsInView} />
+                <StatCounter end={6} startWhen={statsInView} />
               </h3>
-              <p className="stat-desc-text">
-                DELIVERED GLOBALLY, CELEBRATING SUSTAINABLE REVENUE GROWTH
-              </p>
+            </div>
+
+            <div className="editorial-stat-card">
+              <span className="stat-category-tag">LEADS GENERATED</span>
+              <h3 className="stat-large-number">
+                <StatCounter end={14} suffix="K+" startWhen={statsInView} />
+              </h3>
             </div>
           </div>
         </div>
@@ -740,10 +1088,9 @@ const Home = ({ onOpenQueryModal }) => {
               <span className="services-tag-bullet"></span>
               <span className="services-tag-text">OUR ADVANTAGE</span>
             </div>
-            <h2 className="why-choose-title">Why Choose Us</h2>
+            <h2 className="why-choose-title">Why Brands Choose Karya</h2>
             <p className="why-choose-desc">
-              We bridge the gap between creative storytelling and algorithmic precision. Every
-              strategy is backed by real data, total funnel accountability, and compounding ROI.
+              We measure success the way you do: in leads, orders and revenue, not likes and impressions.
             </p>
           </div>
 
@@ -752,40 +1099,36 @@ const Home = ({ onOpenQueryModal }) => {
             <div className={`bento-box bento-large bento-box-1 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
               <div className="bento-top-row">
                 <span className="bento-index">01</span>
-                <span className="bento-tag">DATA & ATTRIBUTION</span>
+               
               </div>
-              <h3 className="bento-title">Total Funnel Accountability & Zero Vanity Metrics</h3>
+              <h3 className="bento-title"> Results You Can Count</h3>
               <p className="bento-paragraph">
-                Many agencies report vanity impressions while actual profits stagnate. At Karya, we
-                take full ownership of your conversion pipeline—from first impression to customer
-                lifetime value. Every ad dollar is tracked with custom attribution models, and we
-                rigorously audit conversion rates at every touchpoint to guarantee measurable,
-                repeatable return on ad spend.
+                Many agencies send reports full of reach and impressions while sales stay flat. We track every rupee from ad to enquiry to order, so you always know what your spend brought back.
               </p>
             </div>
 
             <div className={`bento-box bento-small bento-box-2 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
               <div className="bento-top-row">
                 <span className="bento-index">02</span>
-                <span className="bento-tag">PRECISION SYSTEM</span>
+               
               </div>
-              <h3 className="bento-title">Performance Precision</h3>
+              <h3 className="bento-title">No Lock-In, Full Transparency</h3>
               <ul className="bento-points-list">
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
-                  <span>Zero vanity metrics — 100% focused on revenue</span>
+                  <span>Free lead audit before we start</span>
                 </li>
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
-                  <span>Transparent weekly attribution & live reporting</span>
+                  <span>Month-to-month, cancel anytime</span>
                 </li>
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
-                  <span>Rapid iterative creative testing cycle</span>
+                  <span>Weekly reports on leads and cost per lead</span>
                 </li>
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
-                  <span>Direct access to senior growth strategists</span>
+                  <span>Direct access to the founders</span>
                 </li>
               </ul>
             </div>
@@ -794,25 +1137,25 @@ const Home = ({ onOpenQueryModal }) => {
             <div className={`bento-box bento-small bento-box-3 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
               <div className="bento-top-row">
                 <span className="bento-index">03</span>
-                <span className="bento-tag">TECH ARCHITECTURE</span>
+               
               </div>
-              <h3 className="bento-title">Engineered For Scale</h3>
+              <h3 className="bento-title">One Team for Everything</h3>
               <ul className="bento-points-list">
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
-                  <span>Blazing-fast custom code & landing architectures</span>
+                  <span>Meta, Google, LinkedIn & YouTube Ads</span>
                 </li>
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
-                  <span>Amazon, Flipkart & Shopify store scaling</span>
+                  <span>SEO and social media</span>
                 </li>
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
-                  <span>Dedicated growth account manager</span>
+                  <span>Amazon, Flipkart & Shopify growth</span>
                 </li>
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
-                  <span>Continuous conversion rate optimization (CRO)</span>
+                  <span>Websites built to convert</span>
                 </li>
               </ul>
             </div>
@@ -820,17 +1163,42 @@ const Home = ({ onOpenQueryModal }) => {
             <div className={`bento-box bento-large bento-box-4 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
               <div className="bento-top-row">
                 <span className="bento-index">04</span>
-                <span className="bento-tag">CREATIVE ENGINE</span>
               </div>
-              <h3 className="bento-title">High-Impact Creative Meets Algorithmic Rigor</h3>
+              <h3 className="bento-title">Proven Across Industries & Countries</h3>
               <p className="bento-paragraph">
-                High-performance growth requires the intersection of emotion and engineering. Our
-                in-house designers, copywriters, and developers produce thumb-stopping creative
-                assets engineered specifically to hook modern buyers, while our media buyers
-                dynamically optimize multi-channel bid strategies to consistently outpace your
-                competition.
+               From pearl jewellery and sportswear to dental clinics, SaaS and industrial brands, we’ve grown businesses in 6 countries. Whatever your industry, we’ve likely solved your problem before.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Client Results Section (4x4 Grid on Desktop, Responsive, 2x2 on Mobile) */}
+      <section className="client-results-section" ref={resultsRef} id="results">
+        <div className="client-results-container">
+          <div className={`client-results-header ${resultsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            <div className="services-tag-badge">
+              <span className="services-tag-bullet"></span>
+              <span className="services-tag-text">CLIENT RESULTS</span>
+            </div>
+            <h2 className="client-results-title">Real Numbers. Real Brands.</h2>
+            <p className="client-results-desc">
+              No vanity metrics. Here's what our work actually delivered.
+            </p>
+          </div>
+
+          <div className={`client-results-grid ${resultsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            {CLIENT_RESULTS_DATA.map((item, index) => (
+              <div key={item.id} className="client-result-box">
+                <div className="result-box-top">
+                  <span className="result-index">{index + 1 < 10 ? `0${index + 1}` : index + 1}</span>
+                  <span className="result-services-tag">{item.services}</span>
+                </div>
+                <h3 className="result-metric-text">{item.metric}</h3>
+                <h4 className="result-client-name">{item.client}</h4>
+                <p className="result-desc-text">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -893,54 +1261,56 @@ const Home = ({ onOpenQueryModal }) => {
         </div>
       </section>
 
-      {/* CTA Section (Reference Design with Half Mobile Image, No Logos) */}
-      <section className="cta-showcase-section" ref={ctaRef} id="contact">
-        <div className="cta-showcase-container">
-          <div className="cta-content-wrapper">
-            {/* Left Side: Tag, Heading, Desc, Button */}
-            <div className={`cta-text-side ${ctaInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
-              <div className="cta-release-badge">
-                <span className="cta-dot"></span>
-                <span className="cta-badge-label">Free Consultation</span>
-                <span
-                  className="cta-badge-action"
-                  onClick={() => handleCtaClick('Discovery Call')}
-                  role="button"
-                  tabIndex={0}
-                >
-                  Book a Discovery Call &rarr;
-                </span>
-              </div>
-
-              <h2 className="cta-main-heading">
-                We help brands and individuals bring their vision to life!
-              </h2>
-
-              <p className="cta-sub-description">
-                Our team creates high-converting digital campaigns, scalable technology, and performance
-                strategies that tell your story, acquire customers, and leave a lasting impression on your audience.
-              </p>
-
-              <div className="cta-actions-group">
-                <button
-                  type="button"
-                  className="btn-cta-get-started"
-                  onClick={() => handleCtaClick('Get Started')}
-                >
-                  Get Started
-                </button>
-              </div>
+      {/* Industries We've Worked With Section */}
+      <section className="industries-section" ref={industriesRef} id="industries">
+        <div className="industries-container">
+          <div className={`industries-header ${industriesInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            <div className="services-tag-badge">
+              <span className="services-tag-bullet"></span>
+              <span className="services-tag-text">SECTOR EXPERTISE</span>
             </div>
+            <h2 className="industries-main-title">Industries We've Worked With</h2>
+            <p className="industries-main-desc">
+              Every industry speaks its own language. We speak it.
+            </p>
+          </div>
 
-            {/* Right Side: Half Mobile Asset */}
-            <div className={`cta-mobile-side ${ctaInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
-              <div className="cta-mobile-frame">
-                <img src={mobileImg} alt="Karya Mobile Showcase" className="cta-half-mobile-img" />
-              </div>
+          <div className={`industries-table-card ${industriesInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            <div className="industries-table-scroll">
+              <table className="industries-table">
+                <thead>
+                  <tr>
+                    <th className="th-industry">Industry</th>
+                    <th className="th-brands">Brands</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {INDUSTRIES_DATA.map((row, index) => (
+                    <tr key={row.id} className="industries-table-row">
+                      <td className="td-industry">
+                        <span className="industry-index">{index + 1 < 10 ? `0${index + 1}` : index + 1}</span>
+                        <span className="industry-name">{row.industry}</span>
+                      </td>
+                      <td className="td-brands">
+                        <div className="brand-pills-wrap">
+                          {row.brands.map((brand, bIdx) => (
+                            <span key={`brand-${index}-${bIdx}`} className="brand-pill">
+                              {brand}
+                            </span>
+                          ))}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </section>
+
+      {/* CTA Section (Reference Design with Half Mobile Image, No Logos) */}
+    <CtaSection/>
 
       {/* Video Popout Modal (With dedicated top bar and easy mobile cancel) */}
       {activeVideoUrl && (

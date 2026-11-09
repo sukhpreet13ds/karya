@@ -27,7 +27,7 @@ const Footer = ({ onOpenQueryModal }) => {
             </p>
             <div className="footer-badge-trust">
               <span className="trust-indicator"></span>
-              <span>Trusted by 28+ Global Brands</span>
+              <span>Trusted by brands in 6 countries</span>
             </div>
           </div>
 
@@ -65,7 +65,7 @@ const Footer = ({ onOpenQueryModal }) => {
               </li>
               <li className="contact-item">
                 <Phone size={16} className="contact-icon" />
-                <a href="tel:+919876543210" className="footer-link">+91 98765 43210</a>
+                <a href="tel:+919896093951" className="footer-link">+91 9896093951</a>
               </li>
               <li className="contact-item">
                 <MapPin size={16} className="contact-icon" />
@@ -78,7 +78,7 @@ const Footer = ({ onOpenQueryModal }) => {
               className="btn-footer-query"
               onClick={() => handleQueryClick('Footer Inquiry')}
             >
-              <span>Book a Query</span>
+              <span>Get my free lead audit</span>
               <ArrowUpRight size={16} />
             </button>
           </div>

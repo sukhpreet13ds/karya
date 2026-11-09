@@ -151,9 +151,9 @@ const About = ({ onOpenQueryModal }) => {
               {/* Co-Founder 1: Mr. Surya Thakur */}
               <div className="founder-profile-card">
                 <div className="founder-profile-header">
-                  <div className="founder-avatar-badge">S</div>
+                  {/* <div className="founder-avatar-badge">S</div> */}
                   <div>
-                    <h3 className="founder-profile-name">Mr. Surya Thakur</h3>
+                    <h3 className="founder-profile-name">Surya Thakur</h3>
                     <span className="founder-profile-title">Co-Founder &amp; Growth Strategist</span>
                   </div>
                 </div>
@@ -181,9 +181,9 @@ const About = ({ onOpenQueryModal }) => {
               {/* Co-Founder 2: Miss. Kanishtha */}
               <div className="founder-profile-card">
                 <div className="founder-profile-header">
-                  <div className="founder-avatar-badge badge-alt">K</div>
+                  {/* <div className="founder-avatar-badge badge-alt">K</div> */}
                   <div>
-                    <h3 className="founder-profile-name">Miss. Kanishtha</h3>
+                    <h3 className="founder-profile-name">Kanishtha</h3>
                     <span className="founder-profile-title">Co-Founder &amp; Creative Director</span>
                   </div>
                 </div>

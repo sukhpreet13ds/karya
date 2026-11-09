@@ -105,12 +105,9 @@ const Contact = ({ onOpenQueryModal: _onOpenQueryModal }) => {
                     <Phone size={22} className="info-icon" />
                   </div>
                   <div className="contact-info-text-group">
-                    <h4 className="info-label">Phone Numbers</h4>
+                    <h4 className="info-label">Phone Number</h4>
                     <p className="info-val">
-                      <a href="tel:+919876543210" className="contact-link">+91 98765 43210</a>
-                    </p>
-                    <p className="info-val">
-                      <a href="tel:+919876543211" className="contact-link">+91 98765 43211</a>
+                      <a href="tel:+919896093951" className="contact-link">+91 9896093951</a>
                     </p>
                   </div>
                 </div>
@@ -132,7 +129,7 @@ const Contact = ({ onOpenQueryModal: _onOpenQueryModal }) => {
               {/* Talk on WhatsApp Button */}
               <div className="contact-whatsapp-block">
                 <a
-                  href="https://wa.me/919876543210?text=Hi%20Karya%20Marketing%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
+                  href="https://wa.me/919896093951?text=Hi%20Karya%20Marketing%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-talk-whatsapp"
@@ -223,7 +220,7 @@ const Contact = ({ onOpenQueryModal: _onOpenQueryModal }) => {
                         type="tel"
                         required
                         className="contact-input"
-                        placeholder="e.g. +91 98765 43210"
+                        placeholder="e.g. +91 9896093951"
                         value={formData.number}
                         onChange={handleChange}
                       />

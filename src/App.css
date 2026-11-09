@@ -212,6 +212,19 @@
     font-size: 20px;
   }
 
+  .client-results-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .client-result-box {
+    padding: 20px 16px;
+  }
+
+  .result-metric-text {
+    font-size: 18px;
+  }
+
   .testimonial-quote-box,
   .testimonial-video-box {
     width: 340px;
@@ -221,10 +234,9 @@
     padding: 18px 20px;
   }
 
-  .video-review-card {
+  .video-review-slide-item {
     flex: 0 0 calc(33.333% - 16px);
     min-width: 270px;
-    height: 420px;
   }
 
   .cta-content-wrapper {
@@ -283,6 +295,10 @@
   .hero-services-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
+  }
+
+  .hero-card-big-number {
+    font-size: 24px;
   }
 
   .mobile-menu-backdrop {
@@ -353,8 +369,8 @@
   }
 
   .editorial-stats-row {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
   }
 
   /* Why Choose Us Tablet */
@@ -373,6 +389,28 @@
     grid-column: span 12;
   }
 
+  /* Client Results Tablet */
+  .client-results-section {
+    padding: 70px 0 80px;
+  }
+
+  .client-results-container {
+    padding: 0 24px;
+  }
+
+  .client-results-title {
+    font-size: 38px;
+  }
+
+  .client-results-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .client-result-box {
+    padding: 20px 16px;
+  }
+
   /* Video Reviews Tablet */
   .video-reviews-section {
     padding: 70px 0 80px;
@@ -386,9 +424,12 @@
     font-size: 38px;
   }
 
+  .video-review-slide-item {
+    flex: 0 0 270px;
+  }
+
   .video-review-card {
-    flex: 0 0 260px;
-    height: 400px;
+    height: 380px;
   }
 
   /* Testimonials Tablet */
@@ -408,6 +449,24 @@
     max-height: 190px;
     padding: 16px 18px;
     border-radius: 18px;
+  }
+
+  /* Industries Table Tablet */
+  .industries-section {
+    padding: 70px 0 80px;
+  }
+
+  .industries-container {
+    padding: 0 24px;
+  }
+
+  .industries-main-title {
+    font-size: 38px;
+  }
+
+  .industries-table th,
+  .industries-table td {
+    padding: 16px 20px;
   }
 
   .testimonial-quote-text {
@@ -680,6 +739,22 @@
     overflow: hidden;
   }
 
+  .hero-card-big-number {
+    font-size: 19px;
+    letter-spacing: 0.4px;
+    margin-bottom: 2px;
+  }
+
+  .hero-card-label {
+    font-size: 12.5px;
+    line-height: 1.25;
+  }
+
+  .hero-card-small-line {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
   .card-bottom-action {
     margin-top: 10px;
     gap: 6px;
@@ -894,6 +969,10 @@
     letter-spacing: 1px;
   }
 
+  .editorial-time-stack {
+    align-items: flex-start;
+  }
+
   .editorial-content-grid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -943,13 +1022,13 @@
   }
 
   .editorial-stats-row {
-    grid-template-columns: 1fr;
-    gap: 26px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
     padding-top: 32px;
   }
 
   .stat-large-number {
-    font-size: 50px;
+    font-size: 38px;
     margin-bottom: 4px;
   }
 
@@ -1000,6 +1079,64 @@
     gap: 10px;
   }
 
+  /* Client Results Mobile (2x2 Grid) */
+  .client-results-section {
+    padding: 50px 0 60px;
+  }
+
+  .client-results-container {
+    padding: 0 16px;
+  }
+
+  .client-results-title {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .client-results-desc {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .client-results-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .client-result-box {
+    padding: 14px 10px;
+    border-radius: 12px;
+  }
+
+  .result-index {
+    font-size: 9.5px;
+    padding: 2px 5px;
+  }
+
+  .result-services-tag {
+    font-size: 9.5px;
+    padding: 2px 5px;
+    max-width: 65%;
+  }
+
+  .result-metric-text {
+    font-size: 14.5px;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .result-client-name {
+    font-size: 11px;
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+
+  .result-desc-text {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
   /* Video Reviews Mobile (Horizontal Swipeable Track, No Marquee, Hidden Scrollbar) */
   .video-reviews-section {
     padding: 50px 0 60px;
@@ -1025,10 +1162,14 @@
     padding-bottom: 16px;
   }
 
+  .video-review-slide-item {
+    flex: 0 0 260px;
+    gap: 12px;
+  }
+
   .video-review-card {
-    flex: 0 0 240px;
-    height: 380px;
-    border-radius: 20px;
+    height: 360px;
+    border-radius: 14px;
   }
 
   .video-review-play-center {
@@ -1036,12 +1177,14 @@
     height: 50px;
   }
 
-  .video-review-card-title {
-    font-size: 16px;
+  .video-review-caption-title {
+    font-size: 14.5px;
+    line-height: 1.3;
   }
 
-  .video-review-card-sub {
+  .video-review-caption-desc {
     font-size: 12px;
+    line-height: 1.5;
   }
 
   /* Testimonials Mobile */
@@ -1068,6 +1211,44 @@
     line-height: 1.42;
     margin-bottom: 6px;
     -webkit-line-clamp: 4;
+  }
+
+  /* Industries Table Mobile */
+  .industries-section {
+    padding: 50px 0 60px;
+  }
+
+  .industries-container {
+    padding: 0 16px;
+  }
+
+  .industries-main-title {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .industries-main-desc {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .industries-table-card {
+    border-radius: 14px;
+  }
+
+  .industries-table th,
+  .industries-table td {
+    padding: 14px 16px;
+  }
+
+  .industry-name {
+    font-size: 14px;
+  }
+
+  .brand-pill {
+    font-size: 12px;
+    padding: 4px 10px;
   }
 
   .author-name {

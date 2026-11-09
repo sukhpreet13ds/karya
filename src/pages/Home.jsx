@@ -244,7 +244,7 @@ const CLIENT_RESULTS_DATA = [
   {
     id: 'res-16',
     metric: 'One Brand, Two Markets',
-    client: 'Rett Rose · Footwear · India & UK',
+    client: 'Footwear · India & UK',
     description:
       'Managed Meta Ads and social media strategies to maintain consistent brand communication across the Indian and UK markets.',
     services: 'Meta Ads · Social Media',
@@ -266,7 +266,7 @@ const INDUSTRIES_DATA = [
   {
     id: 'ind-3',
     industry: 'Fashion, Footwear & Sportswear',
-    brands: ['Pro Ultimate Sports', 'Rett Rose', 'Rangeela'],
+    brands: ['Pro Ultimate Sports', 'Rangeela'],
   },
   {
     id: 'ind-4',

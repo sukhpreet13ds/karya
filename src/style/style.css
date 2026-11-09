@@ -1958,12 +1958,15 @@ body {
   padding: 96px 0 100px;
   position: relative;
   border-top: 1px solid rgba(0, 28, 68, 0.06);
+  overflow-x: clip;
 }
 
 .client-results-container {
   max-width: 1480px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 32px;
+  box-sizing: border-box;
 }
 
 .client-results-header {
@@ -1990,8 +1993,10 @@ body {
 
 .client-results-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 22px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .client-result-box {
@@ -2004,6 +2009,10 @@ body {
   justify-content: flex-start;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 18px rgba(0, 28, 68, 0.03);
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .client-result-box:hover {
@@ -2018,6 +2027,8 @@ body {
   align-items: center;
   gap: 8px;
   margin-bottom: 12px;
+  min-width: 0;
+  width: 100%;
 }
 
 .result-index {
@@ -2029,6 +2040,7 @@ body {
   padding: 3px 7px;
   border-radius: 5px;
   letter-spacing: 0.5px;
+  flex-shrink: 0;
 }
 
 .result-services-tag {
@@ -2042,7 +2054,8 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 75%;
+  min-width: 0;
+  max-width: calc(100% - 32px);
 }
 
 .result-metric-text {
@@ -2052,6 +2065,8 @@ body {
   line-height: 1.25;
   color: var(--deep-navy, #001C44);
   margin: 0 0 8px 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .result-client-name {
@@ -2061,6 +2076,8 @@ body {
   color: var(--teal-green, #027F64);
   margin: 0 0 10px 0;
   line-height: 1.4;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .result-desc-text {
@@ -2069,6 +2086,8 @@ body {
   line-height: 1.55;
   color: rgba(0, 28, 68, 0.72);
   margin: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* ==========================================================================

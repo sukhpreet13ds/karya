@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import CtaSection from '../components/CtaSection';
 import herobg from '../assets/herobg.png';
+import mobilesImg from '../assets/mobiles.png';
 
 const About = ({ onOpenQueryModal }) => {
   // Hero background image
@@ -62,21 +63,34 @@ const About = ({ onOpenQueryModal }) => {
                 <span>OUR MISSION</span>
               </div>
               <h2 className="about-section-heading">
-                Marketing Engineered for Revenue, Not Vanity.
+                Marketing Built for Sales, Not Likes.
               </h2>
             </div>
 
             <div className="about-paragraphs-block">
+              <h3 className="about-story-title" style={{ fontSize: '20px', fontWeight: '700', color: 'var(--deep-navy, #001C44)', marginBottom: '14px' }}>
+                Our Story
+              </h3>
               <p className="about-lead-paragraph">
-                Karya Marketing was founded with a singular conviction: ambitious businesses deserve growth
-                partners who treat every marketing rupee with the accountability of an investor. In an era where
-                many agencies deliver vanity impressions and hollow engagement, we obsess over conversion economics,
-                customer acquisition cost (CAC), and verified return on ad spend (ROAS).
+                We didn't start Karya in a boardroom. We started it after years of watching the same problem repeat.
               </p>
               <p className="about-secondary-paragraph">
-                We believe that great marketing happens at the exact intersection of human emotion and technical
-                precision. Our team unites strategic data analysts, thumb-stopping creative directors, performance media
-                buyers, and full-stack software engineers under one roof to build systems that scale reliably month over month.
+                Surya was a Performance Marketing Manager. Kanishtha was a Sales Manager. Working at the same company, we saw brand after brand spend on ads and get little back. They had hired agencies. They had waited. Reports kept coming, full of reach and impressions. Results didn't. Deadlines slipped, and good businesses started losing faith in marketing itself.
+              </p>
+              <p className="about-secondary-paragraph">
+                Meanwhile, we were delivering results for our company's clients every single day. So one day we asked ourselves: if we can do this for them, why not do it directly for the brands who need it most?
+              </p>
+              <p className="about-secondary-paragraph">
+                That's the win-win behind Karya. You get the same experience that big companies pay for, without the extra layers in between. No middlemen, no waiting on a chain of approvals, no paying for overheads that don't grow your business. Just the two people who understand both sides of growth: the marketing that brings in leads, and the sales thinking that turns them into customers.
+              </p>
+              <p className="about-secondary-paragraph">
+                That question became Karya, which means "work" in Hindi. We chose to stay small on purpose. No layers, no handovers to juniors. You talk directly to the people running your campaigns, and every week you see exactly what your money brought back.
+              </p>
+              <p className="about-secondary-paragraph">
+                We're not here to promise you the moon. We're here to do the work, and let the results speak.
+              </p>
+              <p className="about-secondary-paragraph" style={{ fontWeight: '700', color: 'var(--teal-green, #027F64)', fontSize: '18px', marginTop: '16px' }}>
+                Your Growth, Our Karya.
               </p>
             </div>
 
@@ -87,9 +101,9 @@ const About = ({ onOpenQueryModal }) => {
                   <CheckCircle2 size={20} className="about-check-icon" />
                 </div>
                 <div className="check-card-text">
-                  <h4 className="check-card-title">Full-Funnel Ownership</h4>
+                  <h4 className="check-card-title">We Own the Whole Journey</h4>
                   <p className="check-card-desc">
-                    We manage the entire pipeline from top-of-funnel creative to checkout optimization, ensuring no leaks in your customer journey.
+                    From the first ad to the final checkout, we manage every step so no customer slips away in between.
                   </p>
                 </div>
               </div>
@@ -99,9 +113,9 @@ const About = ({ onOpenQueryModal }) => {
                   <CheckCircle2 size={20} className="about-check-icon" />
                 </div>
                 <div className="check-card-text">
-                  <h4 className="check-card-title">Transparent Attribution</h4>
+                  <h4 className="check-card-title">Clear Reports, Every Week</h4>
                   <p className="check-card-desc">
-                    No hidden dashboards or murky metrics. Live reporting, clear weekly briefs, and transparent tracking directly mapped to revenue.
+                    No confusing dashboards. You see how many leads came in, what each cost, and what we're doing next.
                   </p>
                 </div>
               </div>
@@ -111,9 +125,9 @@ const About = ({ onOpenQueryModal }) => {
                   <CheckCircle2 size={20} className="about-check-icon" />
                 </div>
                 <div className="check-card-text">
-                  <h4 className="check-card-title">Engineering-Grade Speed</h4>
+                  <h4 className="check-card-title">Fast Pages That Sell</h4>
                   <p className="check-card-desc">
-                    Custom web platforms and landing architectures built with modern code for sub-second loads and maximum conversion rates.
+                    Mobile-friendly landing pages and websites that load quickly and turn visitors into buyers.
                   </p>
                 </div>
               </div>
@@ -123,9 +137,9 @@ const About = ({ onOpenQueryModal }) => {
                   <CheckCircle2 size={20} className="about-check-icon" />
                 </div>
                 <div className="check-card-text">
-                  <h4 className="check-card-title">Compounding Optimization</h4>
+                  <h4 className="check-card-title">Always Testing, Always Improving</h4>
                   <p className="check-card-desc">
-                    Continuous A/B split testing on ad hooks, design frameworks, and sales funnels to systematically lower your acquisition costs.
+                    We keep testing ads, offers and pages so your cost per lead keeps going down over time.
                   </p>
                 </div>
               </div>
@@ -139,11 +153,11 @@ const About = ({ onOpenQueryModal }) => {
             <div className="about-section-header">
               <div className="about-pill-label">
                 <Users size={14} className="pill-icon" />
-                <span>EXECUTIVE LEADERSHIP</span>
+                <span>THE FOUNDERS</span>
               </div>
-              <h2 className="about-section-heading">Led by Growth &amp; Creative Pioneers</h2>
+              <h2 className="about-section-heading">The Two People Behind Your Growth</h2>
               <p className="about-section-subtext">
-                Direct access to seasoned decision-makers who have scaled brands across paid media, global marketplaces, and bespoke web platforms.
+                When you work with Karya, you work directly with us. No account managers in between.
               </p>
             </div>
 
@@ -158,22 +172,20 @@ const About = ({ onOpenQueryModal }) => {
                   </div>
                 </div>
                 <p className="founder-bio-text">
-                  Surya oversees performance acquisition architecture, media buying algorithms, and cross-channel funnel strategy.
-                  With a relentless focus on unit economics and multi-touch attribution, he has spearheaded growth programs that consistently
-                  outpace industry benchmarks.
+                  A former Performance Marketing Manager, Surya runs the ads and growth strategy. He plans, launches and scales campaigns across Meta, Google and LinkedIn, with one focus: more leads at a lower cost.
                 </p>
                 <ul className="founder-points-list">
                   <li>
                     <CheckCircle2 size={16} className="founder-mini-check" />
-                    <span>Cross-channel paid media architecture (Meta, Google, LinkedIn)</span>
+                    <span>Meta, Google &amp; LinkedIn Ads</span>
                   </li>
                   <li>
                     <CheckCircle2 size={16} className="founder-mini-check" />
-                    <span>Conversion Rate Optimization (CRO) &amp; retention modeling</span>
+                    <span>Tracking, reporting &amp; scaling</span>
                   </li>
                   <li>
                     <CheckCircle2 size={16} className="founder-mini-check" />
-                    <span>Advanced data modeling and algorithmic bidding strategy</span>
+                    <span>Landing pages that convert</span>
                   </li>
                 </ul>
               </div>
@@ -188,21 +200,20 @@ const About = ({ onOpenQueryModal }) => {
                   </div>
                 </div>
                 <p className="founder-bio-text">
-                  Kanishtha directs creative vision, brand identity, and psychological hook crafting. Her methodology bridges high-end
-                  aesthetic storytelling with rapid performance testing, ensuring every creative asset commands attention and inspires action.
+                  A former Sales Manager, Kanishtha knows what makes a customer say yes. She shapes the offers, creatives and messaging that turn clicks into real buyers, and makes sure every client always knows where things stand.
                 </p>
                 <ul className="founder-points-list">
                   <li>
                     <CheckCircle2 size={16} className="founder-mini-check" />
-                    <span>High-converting visual identity and brand positioning</span>
+                    <span>Offers &amp; sales messaging</span>
                   </li>
                   <li>
                     <CheckCircle2 size={16} className="founder-mini-check" />
-                    <span>Psychology-driven ad creative design &amp; hook storytelling</span>
+                    <span>Ad creatives &amp; brand direction</span>
                   </li>
                   <li>
                     <CheckCircle2 size={16} className="founder-mini-check" />
-                    <span>User interface and high-performance experience design</span>
+                    <span>Client communication</span>
                   </li>
                 </ul>
               </div>
@@ -216,9 +227,9 @@ const About = ({ onOpenQueryModal }) => {
             <div className="about-section-header">
               <div className="about-pill-label">
                 <Layers size={14} className="pill-icon" />
-                <span>CORE PILLARS</span>
+                <span>HOW WE WORK</span>
               </div>
-              <h2 className="about-section-heading">How We Engineer Compounding Results</h2>
+              <h2 className="about-section-heading">Our 4-Step Approach to Growth</h2>
             </div>
 
             <div className="about-pillars-grid">
@@ -226,15 +237,14 @@ const About = ({ onOpenQueryModal }) => {
                 <div className="pillar-icon-box">
                   <Target size={24} />
                 </div>
-                <h3 className="pillar-title">1. Precision Audience Targeting</h3>
+                <h3 className="pillar-title">1. Find the Right Buyers</h3>
                 <p className="pillar-paragraph">
-                  We don't guess demographics. We leverage deep market research, competitor search trends, and first-party data to position
-                  your solution right in front of high-intent buyers who are ready to purchase.
+                  We study your market and competitors to show your ads to people ready to buy, and stop spending on those who aren't.
                 </p>
                 <ul className="pillar-check-list">
-                  <li><CheckCircle2 size={15} /><span>High-intent custom audience clustering</span></li>
-                  <li><CheckCircle2 size={15} /><span>Exclusion filters to stop wasted ad spend</span></li>
-                  <li><CheckCircle2 size={15} /><span>Lookalike modeling built on highest LTV buyers</span></li>
+                  <li><CheckCircle2 size={15} /><span>Buyer-focused audiences</span></li>
+                  <li><CheckCircle2 size={15} /><span>No wasted ad spend</span></li>
+                  <li><CheckCircle2 size={15} /><span>Lookalikes of your best customers</span></li>
                 </ul>
               </div>
 
@@ -242,15 +252,14 @@ const About = ({ onOpenQueryModal }) => {
                 <div className="pillar-icon-box">
                   <Sparkles size={24} />
                 </div>
-                <h3 className="pillar-title">2. Thumb-Stopping Creative Engine</h3>
+                <h3 className="pillar-title">2. Make Ads People Stop For</h3>
                 <p className="pillar-paragraph">
-                  Attention spans are short. We engineer creative assets designed with instant visual hooks, empathetic problem-framing,
-                  and clear action catalysts to win the attention war on social feeds.
+                  Short attention spans need strong hooks. We create ads that grab attention in the first 3 seconds and give a clear reason to act.
                 </p>
                 <ul className="pillar-check-list">
-                  <li><CheckCircle2 size={15} /><span>Iterative 3-second hook testing matrix</span></li>
-                  <li><CheckCircle2 size={15} /><span>Dynamic lifestyle &amp; UGC product demonstrations</span></li>
-                  <li><CheckCircle2 size={15} /><span>Persuasive direct-response sales copy</span></li>
+                  <li><CheckCircle2 size={15} /><span>Hook testing</span></li>
+                  <li><CheckCircle2 size={15} /><span>UGC &amp; product videos</span></li>
+                  <li><CheckCircle2 size={15} /><span>Sales-focused ad copy</span></li>
                 </ul>
               </div>
 
@@ -258,15 +267,14 @@ const About = ({ onOpenQueryModal }) => {
                 <div className="pillar-icon-box">
                   <Zap size={24} />
                 </div>
-                <h3 className="pillar-title">3. Conversion Architecture</h3>
+                <h3 className="pillar-title">3. Turn Clicks Into Customers</h3>
                 <p className="pillar-paragraph">
-                  Clicks without conversions are expensive noise. We craft blistering fast landing pages and high-performing checkout
-                  experiences that remove all buying friction and maximize order value.
+                  Traffic means nothing if no one buys. We fix landing pages and checkout so more visitors complete the order.
                 </p>
                 <ul className="pillar-check-list">
-                  <li><CheckCircle2 size={15} /><span>Mobile-first responsive architecture</span></li>
-                  <li><CheckCircle2 size={15} /><span>Strategic trust badges &amp; social proof placement</span></li>
-                  <li><CheckCircle2 size={15} /><span>A/B tested offers, bundles, and checkout flows</span></li>
+                  <li><CheckCircle2 size={15} /><span>Mobile-first pages</span></li>
+                  <li><CheckCircle2 size={15} /><span>Reviews &amp; trust badges</span></li>
+                  <li><CheckCircle2 size={15} /><span>Tested offers &amp; bundles</span></li>
                 </ul>
               </div>
 
@@ -274,15 +282,14 @@ const About = ({ onOpenQueryModal }) => {
                 <div className="pillar-icon-box">
                   <BarChart3 size={24} />
                 </div>
-                <h3 className="pillar-title">4. Compounding Attribution &amp; Scale</h3>
+                <h3 className="pillar-title">4. Track, Then Scale</h3>
                 <p className="pillar-paragraph">
-                  Scaling requires confident budget allocation. We track customer lifecycles across channels, allowing us to safely
-                  increase ad spend while maintaining profitability and protecting margins.
+                  We set up proper tracking so we know exactly what's working, then increase spend only where it pays back.
                 </p>
                 <ul className="pillar-check-list">
-                  <li><CheckCircle2 size={15} /><span>Server-side tracking (CAPI) &amp; GA4 setup</span></li>
-                  <li><CheckCircle2 size={15} /><span>Weekly transparent ROAS &amp; CPA accountability</span></li>
-                  <li><CheckCircle2 size={15} /><span>Predictable horizontal and vertical budget scale</span></li>
+                  <li><CheckCircle2 size={15} /><span>Meta CAPI &amp; GA4 setup</span></li>
+                  <li><CheckCircle2 size={15} /><span>Weekly ROAS &amp; cost-per-lead reports</span></li>
+                  <li><CheckCircle2 size={15} /><span>Safe, steady budget scaling</span></li>
                 </ul>
               </div>
             </div>
@@ -327,7 +334,14 @@ const About = ({ onOpenQueryModal }) => {
       </div>
 
       {/* Same CTA Section as in Home.jsx */}
-      <CtaSection onOpenQueryModal={onOpenQueryModal} />
+      <CtaSection
+        onOpenQueryModal={onOpenQueryModal}
+        badgeLabel="Free Lead Audit · No Lock-In"
+        heading="Work Directly With the Founders"
+        description="Tell us about your business and your ads. We'll personally review them and show you where your spend is leaking, before you commit to anything."
+        buttonText="Get My Free Lead Audit"
+        mobileImage={mobilesImg}
+      />
     </main>
   );
 };

@@ -2090,6 +2090,52 @@ body {
   word-break: break-word;
 }
 
+.result-url-wrap {
+  margin-top: auto;
+  padding-top: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.result-site-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-roboto, 'Roboto', sans-serif);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--teal-green, #027F64);
+  text-decoration: none;
+  background: rgba(2, 127, 100, 0.06);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(2, 127, 100, 0.15);
+  transition: all 0.25s ease;
+  word-break: break-all;
+  max-width: 100%;
+}
+
+.result-site-url {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.result-site-link .result-link-arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.result-site-link:hover {
+  background: rgba(2, 127, 100, 0.12);
+  color: var(--deep-navy, #001C44);
+  border-color: var(--bright-green, #00BB66);
+}
+
+.result-site-link:hover .result-link-arrow {
+  transform: translate(2px, -2px);
+}
+
 /* ==========================================================================
    Video Reviews Section (Horizontal Swipeable Track, No Marquee, Tall Cards)
    ========================================================================== */

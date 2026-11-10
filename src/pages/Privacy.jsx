@@ -117,7 +117,7 @@ const Privacy = () => {
             <h2 className="legal-section-title">7. Your Privacy Rights</h2>
             <p>
               You have the right to request access to the personal data we hold about you, request corrections, or ask for the deletion
-              of your contact information from our records. To exercise these rights, simply email us at <strong>hello@karyamarketing.com</strong>.
+              of your contact information from our records. To exercise these rights, simply email us at <strong>teamkaryamarketing@gmail.com</strong>.
             </p>
           </section>
 
@@ -128,7 +128,7 @@ const Privacy = () => {
               <p><strong>Karya Marketing</strong></p>
               <p className="flex items-center gap-2">
                 <Mail size={16} className="text-teal" />
-                <a href="mailto:hello@karyamarketing.com" className="legal-link">hello@karyamarketing.com</a>
+                <a href="mailto:teamkaryamarketing@gmail.com" className="legal-link">teamkaryamarketing@gmail.com</a>
               </p>
               <p>Available Globally &bull; Headquartered in India</p>
             </div>

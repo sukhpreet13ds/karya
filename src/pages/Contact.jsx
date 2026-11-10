@@ -120,7 +120,7 @@ const Contact = ({ onOpenQueryModal: _onOpenQueryModal }) => {
                   <div className="contact-info-text-group">
                     <h4 className="info-label">Email Address</h4>
                     <p className="info-val">
-                      <a href="mailto:hello@karyamarketing.com" className="contact-link">hello@karyamarketing.com</a>
+                      <a href="mailto:teamkaryamarketing@gmail.com" className="contact-link">teamkaryamarketing@gmail.com</a>
                     </p>
                   </div>
                 </div>

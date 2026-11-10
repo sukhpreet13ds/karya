@@ -61,7 +61,7 @@ const Footer = ({ onOpenQueryModal }) => {
             <ul className="footer-contact-list">
               <li className="contact-item">
                 <Mail size={16} className="contact-icon" />
-                <a href="mailto:hello@karyamarketing.com" className="footer-link">hello@karyamarketing.com</a>
+                <a href="mailto:teamkaryamarketing@gmail.com" className="footer-link">teamkaryamarketing@gmail.com</a>
               </li>
               <li className="contact-item">
                 <Phone size={16} className="contact-icon" />

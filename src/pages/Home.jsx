@@ -21,6 +21,7 @@ import s10 from '../assets/S10.png'
 import s11 from '../assets/S11.jpg'
 import s12 from '../assets/S12.jpg'
 import aboutHome from '../assets/about.png'
+import fourthThumb from '../assets/fourth.png'
 import  {Link} from 'react-router-dom';
 import CtaSection from '../components/CtaSection';
 
@@ -105,7 +106,7 @@ const VIDEO_REVIEWS_DATA = [
   },
   {
     id: 'video-3',
-    title: 'Founder — DC Travellers, Chandigarh',
+    title: 'Navjeevan Singh —  Founder, DC Travellers, Chandigarh',
     description:
       "DC Travellers is a travel agency we've worked with on Google and Meta Ads, bringing in steady travel enquiries. Hear from the founder on what working with Karya looks like.",
     videoUrl: 'https://drive.google.com/file/d/15efqQljLF63utRf8Y1xzDF4lFN08iOpU/view?usp=drive_link',
@@ -116,6 +117,7 @@ const VIDEO_REVIEWS_DATA = [
     description:
       "We designed and built the HCP Compass website from scratch and handle its SEO, so the right audience finds them on Google. Also work as their strategist for social media . Here's Arjun on partnering with Karya.",
     videoUrl: 'https://drive.google.com/file/d/19VClRhFfp4g5K-LYWsHcFWJeW-pZQQzN/view?usp=sharing',
+    thumbnail: fourthThumb,
   },
 ];
 
@@ -128,6 +130,7 @@ const CLIENT_RESULTS_DATA = [
     description:
       'We rebuilt targeting around high-intent buyers and positioned the brand on exclusivity, not discounts. Achieved a 20x return on ad spend.',
     services: 'Meta Ads · Google Ads',
+    url: 'https://www.vipnumbershop.com/',
   },
   {
     id: 'res-2',
@@ -136,6 +139,7 @@ const CLIENT_RESULTS_DATA = [
     description:
       'A full Meta Ads setup with CAPI and catalog feed drove 46% week-over-week sales growth from new customers.',
     services: 'Meta Ads · Google Ads',
+    url: 'https://flawnt.store/?srsltid=AYCX9vL2r8Fi2ukghKB_aXY_CEnpMOSY_511pzC8QZGkYDVbiaNLTu67',
   },
   {
     id: 'res-3',
@@ -144,6 +148,7 @@ const CLIENT_RESULTS_DATA = [
     description:
       'Launched 88 campaigns, scaling each product line independently and reaching 11.2 million people.',
     services: 'Meta Ads · Automation',
+    url: 'https://proultimatesports.com/',
   },
   {
     id: 'res-4',
@@ -160,6 +165,7 @@ const CLIENT_RESULTS_DATA = [
     description:
       'What started as SEO gradually expanded into Google Ads and LinkedIn campaigns, building a long-term marketing partnership.',
     services: 'SEO · Google Ads · LinkedIn Ads',
+    url: 'https://medicaldigitals.com/',
   },
   {
     id: 'res-6',
@@ -176,6 +182,7 @@ const CLIENT_RESULTS_DATA = [
     description:
       'Improved targeting and creatives for a Shopify mobile-app product to generate high-quality leads.',
     services: 'Meta Ads',
+    url: 'https://www.appcartify.com/',
   },
   {
     id: 'res-8',
@@ -192,6 +199,7 @@ const CLIENT_RESULTS_DATA = [
     description:
       'Ran targeted advertising campaigns for an online women’s clothing brand, focusing on performance and conversions.',
     services: 'Meta Ads · Google Ads',
+    url: 'https://www.rangeelaa.com/?srsltid=AYCX9vJHUdPs8MtxNwVDywzQTqXntEqu46_QBv_hifRfgLf3ZSTKykVq',
   },
   {
     id: 'res-10',
@@ -224,6 +232,7 @@ const CLIENT_RESULTS_DATA = [
     description:
       'Managed Google Ads campaigns for over a year, consistently bringing local patients to the dental clinic.',
     services: 'Google Ads',
+    url: 'https://truesmilez.in/',
   },
   {
     id: 'res-14',
@@ -232,6 +241,7 @@ const CLIENT_RESULTS_DATA = [
     description:
       'Delivered an integrated marketing solution covering strategy, social media, Meta Ads, Google Ads, and overall marketing management.',
     services: 'Full-Service Marketing',
+    url: 'https://www.bhealix.com/?srsltid=AYCX9vJLDZaPHqAu2sEPuZ2rXe7VlnAoPDqQoL2he1ow-z5YJhlxxt-j',
   },
   {
     id: 'res-15',
@@ -240,6 +250,7 @@ const CLIENT_RESULTS_DATA = [
     description:
       'Provided Meta Ads expertise and social media consulting to strengthen the brand’s digital presence.',
     services: 'Meta Ads · Social Media',
+    url: 'https://rajatgangajewelsstudio.in/',
   },
   {
     id: 'res-16',
@@ -553,7 +564,7 @@ const VideoReviewCard = ({ video, onPlay }) => {
   const [thumbError, setThumbError] = useState(false);
   const match = video.videoUrl ? video.videoUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) : null;
   const fileId = match ? match[1] : '';
-  const thumbUrl = fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w800` : '';
+  const thumbUrl = video.thumbnail || (fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w800` : '');
 
   const handleTriggerPlay = (e) => {
     if (e) {
@@ -1197,6 +1208,21 @@ const Home = ({ onOpenQueryModal }) => {
                 <h3 className="result-metric-text">{item.metric}</h3>
                 <h4 className="result-client-name">{item.client}</h4>
                 <p className="result-desc-text">{item.description}</p>
+                {item.url && (
+                  <div className="result-url-wrap">
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="result-site-link"
+                    >
+                      <span className="result-site-url">
+                        {item.url.replace(/^https?:\/\//, '').replace(/\/$/, '').split('?')[0]}
+                      </span>
+                      <ArrowUpRight size={13} className="result-link-arrow" strokeWidth={2.4} />
+                    </a>
+                  </div>
+                )}
               </div>
             ))}
           </div>

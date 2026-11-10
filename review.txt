@@ -1,116 +1,67 @@
-Client Results
-Real Numbers. Real Brands.
-No vanity metrics. Here's what our work actually delivered.
+Services Page · Final CTA
+
+Label: Free Lead Audit · No Lock-In
+
+One Call. A Clear Plan for Your Growth.
+
+Share your business with us. We'll tell you exactly which services make sense for you, and which ones don't.
+
+Button: Get My Free Lead Audit
 
 
-1. ₹10 Lakh → ₹2 Crore
-Client: VIP Number Shop · eCommerce · India
+About us page content:
+Label: OUR MISSION
+Marketing Built for Sales, Not Likes.
+Our Story
+We didn't start Karya in a boardroom. We started it after years of watching the same problem repeat.
+Surya was a Performance Marketing Manager. Kanishtha was a Sales Manager. Working at the same company, we saw brand after brand spend on ads and get little back. They had hired agencies. They had waited. Reports kept coming, full of reach and impressions. Results didn't. Deadlines slipped, and good businesses started losing faith in marketing itself.
+Meanwhile, we were delivering results for our company's clients every single day. So one day we asked ourselves: if we can do this for them, why not do it directly for the brands who need it most?
+That's the win-win behind Karya. You get the same experience that big companies pay for, without the extra layers in between. No middlemen, no waiting on a chain of approvals, no paying for overheads that don't grow your business. Just the two people who understand both sides of growth: the marketing that brings in leads, and the sales thinking that turns them into customers.
+That question became Karya, which means "work" in Hindi. We chose to stay small on purpose. No layers, no handovers to juniors. You talk directly to the people running your campaigns, and every week you see exactly what your money brought back.
+We're not here to promise you the moon. We're here to do the work, and let the results speak.
+Your Growth, Our Karya.
+Mission cards (4)
+We Own the Whole Journey From the first ad to the final checkout, we manage every step so no customer slips away in between.
+Clear Reports, Every Week No confusing dashboards. You see how many leads came in, what each cost, and what we're doing next.
+Fast Pages That Sell Mobile-friendly landing pages and websites that load quickly and turn visitors into buyers.
+Always Testing, Always Improving We keep testing ads, offers and pages so your cost per lead keeps going down over time.
+About Page · Founders
+Label: THE FOUNDERS
+The Two People Behind Your Growth
+When you work with Karya, you work directly with us. No account managers in between.
+Surya Thakur · Co-Founder & Growth Strategist A former Performance Marketing Manager, Surya runs the ads and growth strategy. He plans, launches and scales campaigns across Meta, Google and LinkedIn, with one focus: more leads at a lower cost.
+Meta, Google & LinkedIn Ads
+Tracking, reporting & scaling
+Landing pages that convert
+Kanishtha · Co-Founder & [role to confirm] A former Sales Manager, Kanishtha knows what makes a customer say yes. She shapes the offers, creatives and messaging that turn clicks into real buyers, and makes sure every client always knows where things stand.
+Offers & sales messaging
+Ad creatives & brand direction
+Client communication
+About Page · How We Work
+Label: HOW WE WORK
+Our 4-Step Approach to Growth
+1. Find the Right Buyers We study your market and competitors to show your ads to people ready to buy, and stop spending on those who aren't.
+Buyer-focused audiences
+No wasted ad spend
+Lookalikes of your best customers
+2. Make Ads People Stop For Short attention spans need strong hooks. We create ads that grab attention in the first 3 seconds and give a clear reason to act.
+Hook testing
+UGC & product videos
+Sales-focused ad copy
+3. Turn Clicks Into Customers Traffic means nothing if no one buys. We fix landing pages and checkout so more visitors complete the order.
+Mobile-first pages
+Reviews & trust badges
+Tested offers & bundles
+4. Track, Then Scale We set up proper tracking so we know exactly what's working, then increase spend only where it pays back.
+Meta CAPI & GA4 setup
+Weekly ROAS & cost-per-lead reports
+Safe, steady budget scaling
 
-Description: We rebuilt targeting around high-intent buyers and positioned the brand on exclusivity, not discounts. Achieved a 20x return on ad spend.
 
-Services: Meta Ads · Google Ads
+CTA
+Label: Free Lead Audit · No Lock-In
+Work Directly With the Founders
+Tell us about your business and your ads. We'll personally review them and show you where your spend is leaking, before you commit to anything.
+Button: Get My Free Lead Audit
 
-2. ₹1.99 Lakh in 8 Days
-Client: Flawnt · Pearl Jewellery · India
 
-Description: A full Meta Ads setup with CAPI and catalog feed drove 46% week-over-week sales growth from new customers.
-
-Services: Meta Ads · Google Ads
-
-3. Up to 3.64x ROAS
-Client: Pro Ultimate Sports · Sportswear · India
-
-Description: Launched 88 campaigns, scaling each product line independently and reaching 11.2 million people.
-
-Services: Meta Ads · Automation
-
-4. 2.3 Lakh Profile Visits at ₹0.93
-Client: CEAT Specialty · Industrial · Global
-
-Description: Ran country-specific campaigns across Germany, UK, France, North America, and India in collaboration with a partner agency.
-
-Services: Google Ads · Meta Ads · LinkedIn Ads
-
-5. 2 Years, Still Growing Together
-Client: Medical Digitals · Healthcare Marketing · Europe
-
-Description: What started as SEO gradually expanded into Google Ads and LinkedIn campaigns, building a long-term marketing partnership.
-
-Services: SEO · Google Ads · LinkedIn Ads
-
-6. $17K → $47.9K Revenue
-Client: Dura Craft · Furniture · Australia
-
-Description: Refined campaigns and tested creatives that directed potential buyers straight to product pages.
-
-Services: Meta Ads · Google Ads
-
-7. 1,967 Leads for ₹66.5K
-Client: AppCartify · SaaS · UAE, India, USA
-
-Description: Improved targeting and creatives for a Shopify mobile-app product to generate high-quality leads.
-
-Services: Meta Ads
-
-8. 939 Leads at $3.65 Each
-Client: VIS Learning · Education · Australia
-
-Description: Executed targeted lead generation campaigns for an educational visa consultancy.
-
-Services: Meta Ads
-
-9. 13x ROAS
-Client: Rangeela · Clothing · Canada
-
-Description: Ran targeted advertising campaigns for an online women's clothing brand, focusing on performance and conversions.
-
-Services: Meta Ads · Google Ads
-
-10. 314K → 3.57M Views
-Client: ThinkJr · Kids Education · USA
-
-Description: Reduced cost per view by 75% while increasing clicks from 455 to 12.5K through optimized YouTube campaigns.
-
-Services: YouTube Ads
-
-11. 591 Leads at ₹50 Each
-Client: Emerald Heights Schools · Education · India
-
-Description: Generated admission leads through targeted campaigns for two schools in Indore.
-
-Services: Meta Ads
-
-12. 244K Clicks, 1.89K Conversions
-Client: GoMage · eCommerce Agency · USA
-
-Description: Managed 12 months of Google Ads campaigns, achieving an average cost per click of just $0.20.
-
-Services: Google Ads
-
-13. A Year of Steady Patient Calls
-Client: True Smilez · Dental Clinic · Mohali
-
-Description: Managed Google Ads campaigns for over a year, consistently bringing local patients to the dental clinic.
-
-Services: Google Ads
-
-14. A Full Marketing Team in One Partner
-Client: Bhealix · Skincare · India
-
-Description: Delivered an integrated marketing solution covering strategy, social media, Meta Ads, Google Ads, and overall marketing management.
-
-Services: Full-Service Marketing
-
-15. Meta Ads + Social Media Direction
-Client: Rajat Ganga Jewellers · Jewellery · Jaipur
-
-Description: Provided Meta Ads expertise and social media consulting to strengthen the brand's digital presence.
-
-Services: Meta Ads · Social Media
-
-16. One Brand, Two Markets
-Client: Rett Rose · Footwear · India & UK
-
-Description: Managed Meta Ads and social media strategies to maintain consistent brand communication across the Indian and UK markets.
-
-Services: Meta Ads · Social Media

@@ -1,7 +1,17 @@
 import React from 'react';
-import mobileImg from '../assets/mobile.png';
+import defaultMobileImg from '../assets/mobile.png';
 
-const CtaSection = ({ onOpenQueryModal }) => {
+const CtaSection = ({
+  onOpenQueryModal,
+  badgeLabel = 'Free Lead Audit · No Lock-In',
+  badgeActionText = 'Book a Discovery Call →',
+  badgeActionLink = 'https://wa.me/919896093951',
+  heading = 'Find Out What’s Stopping Your Ads From Selling',
+  description = 'Send us your ad account or website. Within 48 hours, we’ll show you where your spend is leaking and 3 fixes you can use right away, even if you never hire us.',
+  buttonText = 'Get My Free Lead Audit',
+  buttonLink = 'https://wa.me/919896093951?text=Get%20my%20free%20lead%20audit',
+  mobileImage = defaultMobileImg,
+}) => {
   const handleCtaClick = (service = 'Discovery Call') => {
     if (onOpenQueryModal) {
       onOpenQueryModal(service);
@@ -16,41 +26,43 @@ const CtaSection = ({ onOpenQueryModal }) => {
           <div className="cta-text-side animate__animated animate__fadeInUp">
             <div className="cta-release-badge">
               <span className="cta-dot"></span>
-              <span className="cta-badge-label">Free Lead Audit · No Lock-In</span>
+              <span className="cta-badge-label">{badgeLabel}</span>
               
-              <a href="https://wa.me/919896093951" style={{color:"inherit", textDecorationLine:"none"}} target="_blank" rel="noopener noreferrer"><span
-                className="cta-badge-action"
-                role="button"
-                tabIndex={0}
-              >
-                Book a Discovery Call &rarr;
-              </span>
+              <a href={badgeActionLink} style={{color:"inherit", textDecorationLine:"none"}} target="_blank" rel="noopener noreferrer">
+                <span
+                  className="cta-badge-action"
+                  role="button"
+                  tabIndex={0}
+                >
+                  {badgeActionText}
+                </span>
               </a>
             </div>
 
             <h2 className="cta-main-heading">
-              Find Out What’s Stopping Your Ads From Selling
+              {heading}
             </h2>
 
             <p className="cta-sub-description">
-              Send us your ad account or website. Within 48 hours, we’ll show you where your spend is leaking and 3 fixes you can use right away, even if you never hire us.
-
+              {description}
             </p>
 
             <div className="cta-actions-group">
-             <a href="https://wa.me/919896093951?text=Get%20my%20free%20lead%20audit" target="_blank" rel="noopener noreferrer" > <button
-                type="button"
-                className="btn-cta-get-started"
-              >
-                Get My Free Lead Audit
-              </button></a>
+              <a href={buttonLink} target="_blank" rel="noopener noreferrer">
+                <button
+                  type="button"
+                  className="btn-cta-get-started"
+                >
+                  {buttonText}
+                </button>
+              </a>
             </div>
           </div>
 
           {/* Right Side: Half Mobile Asset */}
           <div className="cta-mobile-side animate__animated animate__fadeInUp">
             <div className="cta-mobile-frame">
-              <img src={mobileImg} alt="Karya Mobile Showcase" className="cta-half-mobile-img" />
+              <img src={mobileImage} alt="Karya Mobile Showcase" className="cta-half-mobile-img" />
             </div>
           </div>
         </div>

@@ -391,7 +391,13 @@ const Services = ({ onOpenQueryModal }) => {
       </section>
 
       {/* CTA Section */}
-      <CtaSection onOpenQueryModal={onOpenQueryModal} />
+      <CtaSection
+        onOpenQueryModal={onOpenQueryModal}
+        badgeLabel="Free Lead Audit · No Lock-In"
+        heading="One Call. A Clear Plan for Your Growth."
+        description="Share your business with us. We'll tell you exactly which services make sense for you, and which ones don't."
+        buttonText="Get My Free Lead Audit"
+      />
     </main>
   );
 };

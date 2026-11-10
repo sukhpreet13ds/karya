@@ -127,7 +127,7 @@ const Terms = () => {
               <p><strong>Karya Marketing</strong></p>
               <p className="flex items-center gap-2">
                 <Mail size={16} className="text-teal" />
-                <a href="mailto:hello@karyamarketing.com" className="legal-link">hello@karyamarketing.com</a>
+                <a href="mailto:teamkaryamarketing@gmail.com" className="legal-link">teamkaryamarketing@gmail.com</a>
               </p>
               <p>Available Globally &bull; Headquartered in India</p>
             </div>

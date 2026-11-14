@@ -73,14 +73,16 @@ const Footer = ({ onOpenQueryModal }) => {
               </li>
             </ul>
 
-            <button
-              type="button"
+            <a
+              href="https://wa.me/919896093951?text=Hi%20Karya%20Marketing%2C%20I%20would%20like%20to%20get%20my%20free%20lead%20audit."
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-footer-query"
-              onClick={() => handleQueryClick('Footer Inquiry')}
+              style={{ textDecoration: 'none' }}
             >
               <span>Get my free lead audit</span>
               <ArrowUpRight size={16} />
-            </button>
+            </a>
           </div>
         </div>
 

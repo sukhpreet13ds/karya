@@ -98,14 +98,16 @@ const Navbar = ({ onOpenQueryModal }) => {
 
         {/* Desktop CTA */}
         <div className="navbar-actions-desktop">
-          <button
-            type="button"
+          <a
+            href="https://wa.me/919896093951?text=Hi%20Karya%20Marketing%2C%20I%20would%20like%20to%20book%20a%20query."
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-book-query"
-            onClick={handleBookQueryClick}
+            style={{ textDecoration: 'none' }}
           >
             <span>Book a Query</span>
             <ArrowUpRight className="btn-arrow-tilt" size={16} strokeWidth={2.4} />
-          </button>
+          </a>
         </div>
 
         {/* Mobile Animated Burger Button */}
@@ -194,14 +196,17 @@ const Navbar = ({ onOpenQueryModal }) => {
 
             {/* Mobile Book a Query Button */}
             <div className="mobile-menu-footer">
-              <button
-                type="button"
+              <a
+                href="https://wa.me/919896093951?text=Hi%20Karya%20Marketing%2C%20I%20would%20like%20to%20book%20a%20query."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-book-query mobile-book-query-btn"
-                onClick={handleBookQueryClick}
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ textDecoration: 'none' }}
               >
                 <span>Book a Query</span>
                 <ArrowUpRight className="btn-arrow-tilt" size={17} strokeWidth={2.4} />
-              </button>
+              </a>
             </div>
           </div>
         </div>,

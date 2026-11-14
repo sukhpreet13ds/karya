@@ -22,7 +22,7 @@ import s11 from '../assets/S11.jpg'
 import s12 from '../assets/S12.jpg'
 import aboutHome from '../assets/about.png'
 import fourthThumb from '../assets/fourth.png'
-import  {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CtaSection from '../components/CtaSection';
 
 const ROTATING_WORDS = ['Forward.', 'Beyond.', 'Higher.'];
@@ -252,14 +252,7 @@ const CLIENT_RESULTS_DATA = [
     services: 'Meta Ads · Social Media',
     url: 'https://rajatgangajewelsstudio.in/',
   },
-  {
-    id: 'res-16',
-    metric: 'One Brand, Two Markets',
-    client: 'Footwear · India & UK',
-    description:
-      'Managed Meta Ads and social media strategies to maintain consistent brand communication across the Indian and UK markets.',
-    services: 'Meta Ads · Social Media',
-  },
+
 ];
 
 // Industries We've Worked With data from review.txt
@@ -734,15 +727,23 @@ const Home = ({ onOpenQueryModal }) => {
   }, [totalSlides, activeServiceIdx]);
 
   const handleServiceCardClick = (serviceTitle) => {
-    if (onOpenQueryModal) {
-      onOpenQueryModal(serviceTitle);
-    }
+    window.open(
+      `https://wa.me/919896093951?text=${encodeURIComponent(
+        `Hi Karya Marketing, I would like to discuss ${serviceTitle || 'a project'}.`
+      )}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
   };
 
   const handleCtaClick = (service = '') => {
-    if (onOpenQueryModal) {
-      onOpenQueryModal(service);
-    }
+    window.open(
+      `https://wa.me/919896093951?text=${encodeURIComponent(
+        `Hi Karya Marketing, I would like to book a query${service ? ` about ${service}` : ''}.`
+      )}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
   };
 
   // Switch active service and reset slide to first
@@ -775,20 +776,22 @@ const Home = ({ onOpenQueryModal }) => {
             </p>
 
             <div className="hero-cta-group">
-              <button
-                type="button"
+              <a
+                href="https://wa.me/919896093951?text=Hi%20Karya%20Marketing%2C%20I%20would%20like%20to%20book%20a%20query."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-hero-primary"
-                onClick={() => handleCtaClick()}
+                style={{ textDecoration: 'none' }}
               >
                 <span>Book a Query</span>
                 <ArrowUpRight className="btn-arrow-tilt" size={18} strokeWidth={2.4} />
-              </button>
+              </a>
 
               <button
                 type="button"
                 className="btn-hero-secondary"
               >
-               <Link to="/services" style={{textDecoration: "none", color: "inherit"}}> <span>Explore Services</span></Link>
+                <Link to="/services" style={{ textDecoration: "none", color: "inherit" }}> <span>Explore Services</span></Link>
                 <ArrowUpRight className="btn-arrow-tilt" size={18} strokeWidth={2.4} />
               </button>
             </div>
@@ -849,7 +852,40 @@ const Home = ({ onOpenQueryModal }) => {
           </div>
         </div>
       </section>
+      <section className="editorial-about-section" ref={aboutRef} id="about">
+      <div className="editorial-container">
+        {/* Bottom Stats Section with animated counter effect */}
+        <div className={`editorial-stats-row ${statsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`} ref={statsRef}>
+          <div className="editorial-stat-card">
+            <span className="stat-category-tag">AD SPEND MANAGED</span>
+            <h3 className="stat-large-number">
+              <StatCounter prefix="$" end={1.5} decimals={1} suffix="M+" startWhen={statsInView} />
+            </h3>
+          </div>
 
+          <div className="editorial-stat-card">
+            <span className="stat-category-tag">PEAK ROAS</span>
+            <h3 className="stat-large-number">
+              <StatCounter end={20} suffix="x" startWhen={statsInView} />
+            </h3>
+          </div>
+
+          <div className="editorial-stat-card">
+            <span className="stat-category-tag">COUNTRIES SERVED</span>
+            <h3 className="stat-large-number">
+              <StatCounter end={6} startWhen={statsInView} />
+            </h3>
+          </div>
+
+          <div className="editorial-stat-card">
+            <span className="stat-category-tag">LEADS GENERATED</span>
+            <h3 className="stat-large-number">
+              <StatCounter end={14} suffix="K+" startWhen={statsInView} />
+            </h3>
+          </div>
+        </div>
+        </div>
+      </section>
       {/* Services Showcase Section */}
       <section className="services-showcase-section" ref={servicesRef} id="services">
         <div className="services-showcase-container">
@@ -872,7 +908,7 @@ const Home = ({ onOpenQueryModal }) => {
             <div className={`services-visual-area ${servicesInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
               <div className="showcase-device-frame">
                 {/* Top Window Bar */}
-               
+
 
                 {/* Animated Slide Screen */}
                 <div className="showcase-screen-viewport">
@@ -949,7 +985,7 @@ const Home = ({ onOpenQueryModal }) => {
                   >
                     <div className="feature-card-header">
                       <h3 className="feature-card-title">{service.title}</h3>
-                      
+
                     </div>
                     <p className="feature-card-desc">{service.desc}</p>
                   </div>
@@ -987,39 +1023,14 @@ const Home = ({ onOpenQueryModal }) => {
           <div className="editorial-content-grid">
             <div className={`editorial-left-col ${aboutInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
               <p className="editorial-paragraph">
-                We are a full-service digital marketing and performance growth partner focused on
-                creating thoughtful, ROI-centered digital experiences. With a sharp eye for metrics
-                and a deep understanding of consumer psychology, we craft strategies that are not
-                only visually compelling but also scalable, intuitive, and profitable.
+                We’re a performance marketing team for brands that want sales, not likes. We started Karya after years of watching agencies promise results and miss deadlines, so we built a small team that delivers, on time.
+                
               </p>
 
               <p className="editorial-paragraph">
-                We believe great marketing goes beyond surface aesthetics—it solves real business
-                problems and delivers meaningful revenue experiences. Our approach combines rigorous
-                data, creative storytelling, and tech architecture to build products and campaigns
-                that users enjoy and businesses value.
+               You work directly with the founders. No middlemen, no juniors, just clear weekly results.
               </p>
 
-              {/* Co-Founders Highlight */}
-              <div className="editorial-founders-block">
-                <span className="founders-label">CO-FOUNDERS</span>
-                <div className="founders-chips">
-                  <div className="founder-chip">
-                    {/* <span className="founder-avatar-initial">S</span> */}
-                    <div className="founder-info">
-                      <strong className="founder-name">Surya Thakur</strong>
-                      <span className="founder-role">Co-Founder & Growth Strategist</span>
-                    </div>
-                  </div>
-                  <div className="founder-chip">
-                    {/* <span className="founder-avatar-initial">K</span> */}
-                    <div className="founder-info">
-                      <strong className="founder-name">Kanishtha</strong>
-                      <span className="founder-role">Co-Founder & Creative Director</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               {/* Know More Button */}
               <div className="editorial-action-row">
@@ -1027,71 +1038,47 @@ const Home = ({ onOpenQueryModal }) => {
                   type="button"
                   className="btn-know-more"
                 >
-             <Link to="/about" style={{textDecoration: "none", color: "inherit"}}><span >Know more</span></Link>
+                  <Link to="/about" style={{ textDecoration: "none", color: "inherit" }}><span >Read Our Story</span></Link>
                   <ArrowUpRight className="btn-arrow-tilt" size={18} strokeWidth={2.4} />
                 </button>
               </div>
             </div>
 
-            {/* Right Column: Image Frame (Empty placeholder ready for upload) */}
+            {/* Right Column: Two Founder Profile Cards */}
             <div className={`editorial-right-col ${aboutInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
-              <div className="editorial-image-frame">
-                {editorialImage ? (
-                  <img
-                    src={editorialImage}
-                    alt="Karya Marketing Profile"
-                    className="editorial-main-img"
-                  />
-                ) : (
-                  <div className="editorial-placeholder-box">
-                    <div className="editorial-placeholder-inner">
-                      <div className="placeholder-cam-icon">
-                        <ImageIcon size={44} strokeWidth={1.6} />
-                      </div>
-                      <h4 className="placeholder-head">Karya Marketing Showcase</h4>
-                      <p className="placeholder-sub">Upload image in editorialImage state</p>
-                      <span className="placeholder-badge">Ready For Image</span>
+              <div className="editorial-founders-cards-wrap">
+                <div className="editorial-founder-card">
+                  <div className="editorial-founder-top">
+                    <div className="editorial-founder-info">
+                      <h3 className="editorial-founder-name">Surya Thakur</h3>
+                      <span className="editorial-founder-role">Co-Founder &amp; Growth Strategist</span>
                     </div>
                   </div>
-                )}
+                  <p className="editorial-founder-desc">
+                    Former Performance Marketing Manager. Runs your ads and growth strategy.
+                  </p>
+                </div>
+
+                <div className="editorial-founder-card">
+                  <div className="editorial-founder-top">
+                    <div className="editorial-founder-info">
+                      <h3 className="editorial-founder-name">Kanishtha</h3>
+                      <span className="editorial-founder-role">Co-Founder &amp; Creative Director</span>
+                    </div>
+                  </div>
+                  <p className="editorial-founder-desc">
+                    Former Sales Manager. Turns your leads into customers.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Bottom Stats Section with animated counter effect */}
-          <div className={`editorial-stats-row ${statsInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`} ref={statsRef}>
-            <div className="editorial-stat-card">
-              <span className="stat-category-tag">AD SPEND MANAGED</span>
-              <h3 className="stat-large-number">
-                <StatCounter prefix="$" end={1.5} decimals={1} suffix="M+" startWhen={statsInView} />
-              </h3>
-            </div>
 
-            <div className="editorial-stat-card">
-              <span className="stat-category-tag">PEAK ROAS</span>
-              <h3 className="stat-large-number">
-                <StatCounter end={20} suffix="x" startWhen={statsInView} />
-              </h3>
-            </div>
-
-            <div className="editorial-stat-card">
-              <span className="stat-category-tag">COUNTRIES SERVED</span>
-              <h3 className="stat-large-number">
-                <StatCounter end={6} startWhen={statsInView} />
-              </h3>
-            </div>
-
-            <div className="editorial-stat-card">
-              <span className="stat-category-tag">LEADS GENERATED</span>
-              <h3 className="stat-large-number">
-                <StatCounter end={14} suffix="K+" startWhen={statsInView} />
-              </h3>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section (Bento Grid: 2 Large, 2 Small across 2 rows) */}
+      {/* Why Choose Us Section (Bento Grid: 4 Boxes Aligned) */}
       <section className="why-choose-section" ref={whyRef} id="why-choose-us">
         <div className="why-choose-container">
           <div className={`why-choose-header ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
@@ -1106,22 +1093,10 @@ const Home = ({ onOpenQueryModal }) => {
           </div>
 
           <div className="bento-grid-wrapper">
-            {/* Row 1: Box 1 (Large - Paragraph) & Box 2 (Small - Check Points) */}
-            <div className={`bento-box bento-large bento-box-1 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            {/* Row 1: Box 2 and Box 3 aligned together */}
+            <div className={`bento-box bento-box-1 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
               <div className="bento-top-row">
                 <span className="bento-index">01</span>
-               
-              </div>
-              <h3 className="bento-title"> Results You Can Count</h3>
-              <p className="bento-paragraph">
-                Many agencies send reports full of reach and impressions while sales stay flat. We track every rupee from ad to enquiry to order, so you always know what your spend brought back.
-              </p>
-            </div>
-
-            <div className={`bento-box bento-small bento-box-2 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
-              <div className="bento-top-row">
-                <span className="bento-index">02</span>
-               
               </div>
               <h3 className="bento-title">No Lock-In, Full Transparency</h3>
               <ul className="bento-points-list">
@@ -1144,17 +1119,15 @@ const Home = ({ onOpenQueryModal }) => {
               </ul>
             </div>
 
-            {/* Row 2: Box 3 (Small - Check Points) & Box 4 (Large - Paragraph) */}
-            <div className={`bento-box bento-small bento-box-3 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            <div className={`bento-box bento-box-2 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
               <div className="bento-top-row">
-                <span className="bento-index">03</span>
-               
+                <span className="bento-index">02</span>
               </div>
               <h3 className="bento-title">One Team for Everything</h3>
               <ul className="bento-points-list">
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
-                  <span>Meta, Google, LinkedIn & YouTube Ads</span>
+                  <span>Meta, Google, LinkedIn &amp; YouTube Ads</span>
                 </li>
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
@@ -1162,7 +1135,7 @@ const Home = ({ onOpenQueryModal }) => {
                 </li>
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
-                  <span>Amazon, Flipkart & Shopify growth</span>
+                  <span>Amazon, Flipkart &amp; Shopify growth</span>
                 </li>
                 <li>
                   <CheckCircle2 className="check-icon" size={19} />
@@ -1171,13 +1144,24 @@ const Home = ({ onOpenQueryModal }) => {
               </ul>
             </div>
 
-            <div className={`bento-box bento-large bento-box-4 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+            {/* Row 2: Box 1 and Box 4 together below */}
+            <div className={`bento-box bento-box-3 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
+              <div className="bento-top-row">
+                <span className="bento-index">03</span>
+              </div>
+              <h3 className="bento-title">Results You Can Count</h3>
+              <p className="bento-paragraph">
+                Many agencies send reports full of reach and impressions while sales stay flat. We track every rupee from ad to enquiry to order, so you always know what your spend brought back.
+              </p>
+            </div>
+
+            <div className={`bento-box bento-box-4 ${whyInView ? 'animate__animated animate__fadeInUp' : 'section-fade-prep'}`}>
               <div className="bento-top-row">
                 <span className="bento-index">04</span>
               </div>
-              <h3 className="bento-title">Proven Across Industries & Countries</h3>
+              <h3 className="bento-title">Proven Across Industries &amp; Countries</h3>
               <p className="bento-paragraph">
-               From pearl jewellery and sportswear to dental clinics, SaaS and industrial brands, we’ve grown businesses in 6 countries. Whatever your industry, we’ve likely solved your problem before.
+                From pearl jewellery and sportswear to dental clinics, SaaS and industrial brands, we’ve grown businesses in 6 countries. Whatever your industry, we’ve likely solved your problem before.
               </p>
             </div>
           </div>
@@ -1336,7 +1320,7 @@ const Home = ({ onOpenQueryModal }) => {
       </section>
 
       {/* CTA Section (Reference Design with Half Mobile Image, No Logos) */}
-    <CtaSection/>
+      <CtaSection />
 
       {/* Video Popout Modal (With dedicated top bar and easy mobile cancel) */}
       {activeVideoUrl && (

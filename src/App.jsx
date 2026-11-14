@@ -10,7 +10,6 @@ import Services from './pages/Services';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Footer from './components/Footer';
-import QueryModal from './components/QueryModal';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -21,38 +20,31 @@ const ScrollToTop = () => {
 };
 
 function App() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState('');
-
-  const handleOpenModal = (serviceName = '') => {
-    setSelectedService(serviceName || '');
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
+  const handleOpenWhatsApp = (serviceName = '') => {
+    window.open(
+      `https://wa.me/919896093951?text=${encodeURIComponent(
+        `Hi Karya Marketing, I would like to book a query${serviceName ? ` about ${serviceName}` : ''}.`
+      )}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
   };
 
   return (
     <BrowserRouter>
       <ScrollToTop />
       <div className="app-layout">
-        <Navbar onOpenQueryModal={handleOpenModal} />
+        <Navbar onOpenQueryModal={handleOpenWhatsApp} />
         <Routes>
-          <Route path="/" element={<Home onOpenQueryModal={handleOpenModal} />} />
-          <Route path="/about" element={<About onOpenQueryModal={handleOpenModal} />} />
-          <Route path="/contact" element={<Contact onOpenQueryModal={handleOpenModal} />} />
-          <Route path="/services" element={<Services onOpenQueryModal={handleOpenModal} />} />
+          <Route path="/" element={<Home onOpenQueryModal={handleOpenWhatsApp} />} />
+          <Route path="/about" element={<About onOpenQueryModal={handleOpenWhatsApp} />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Services onOpenQueryModal={handleOpenWhatsApp} />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="*" element={<Home onOpenQueryModal={handleOpenModal} />} />
+          <Route path="*" element={<Home onOpenQueryModal={handleOpenWhatsApp} />} />
         </Routes>
-        <Footer onOpenQueryModal={handleOpenModal} />
-        <QueryModal
-          isOpen={modalOpen}
-          onClose={handleCloseModal}
-          initialService={selectedService}
-        />
+        <Footer onOpenQueryModal={handleOpenWhatsApp} />
       </div>
     </BrowserRouter>
   );

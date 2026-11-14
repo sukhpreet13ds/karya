@@ -305,14 +305,16 @@ const ServiceRow = ({ service, index, onOpenQueryModal }) => {
             <span>WhatsApp Us</span>
           </a>
 
-          <button
-            type="button"
+          <a
+            href={`https://wa.me/919896093951?text=${encodeURIComponent(`Hi Karya Marketing, I want to book an inquiry about ${service.title}.`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-service-book-now"
-            onClick={() => onOpenQueryModal && onOpenQueryModal(service.title)}
+            style={{ textDecoration: 'none' }}
           >
             <span>Book Now</span>
             <ArrowUpRight size={17} strokeWidth={2.4} />
-          </button>
+          </a>
         </div>
       </div>
     </div>

@@ -73,8 +73,7 @@ const Contact = () => {
                   <div className="contact-info-text-group">
                     <h4 className="info-label">Address</h4>
                     <p className="info-val">
-                      Global Client Support Studio<br />
-                      Headquartered in New Delhi, India
+                 Chandigarh, Punjab, India     
                     </p>
                   </div>
                 </div>
@@ -132,7 +131,7 @@ const Contact = () => {
                 <div className="contact-map-frame">
                   <iframe
                     title="Karya Marketing Location Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83923192776!2d77.06889754725782!3d28.52758200617607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b715389640!2sDelhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d141612.22466165523!2d76.77731424999999!3d30.730783849999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fecc4f133937f%3A0x7c8b9738300d12a!2sChandigarh!5e1!3m2!1sen!2sin!4v1794639183279!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
